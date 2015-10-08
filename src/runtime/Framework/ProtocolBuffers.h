@@ -34,10 +34,12 @@ FOUNDATION_EXPORT const unsigned char ProtocolBuffers_frameworkVersionString[];
 #import <ProtocolBuffers/MutableExtensionRegistry.h>
 #import <ProtocolBuffers/MutableField.h>
 #import <ProtocolBuffers/PBArray.h>
+#import <ProtocolBuffers/RingBuffer.h>
 #import <ProtocolBuffers/UnknownFieldSet.h>
 #import <ProtocolBuffers/UnknownFieldSetBuilder.h>
 #import <ProtocolBuffers/Utilities.h>
 #import <ProtocolBuffers/WireFormat.h>
+#import <ProtocolBuffers/TextFormat.h>
 #import <ProtocolBuffers/Descriptor.pb.h>
 #import <ProtocolBuffers/ObjectivecDescriptor.pb.h>
 

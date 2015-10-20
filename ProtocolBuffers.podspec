@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ProtocolBuffers"
-  s.version      = "1.9.9"
+  s.version      = "1.9.9.1"
   s.summary      = "Protocol Buffers for Objective-C"
   s.description  = <<-DESC
                       An implementation of Protocol Buffers 2.6 in Objective C.
@@ -52,6 +52,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.8'
+  s.watchos.deployment_target = '2.0'
   s.requires_arc = true
 
 end

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ProtocolBuffers"
-  s.version      = "1.9.9.2"
+  s.version      = "1.9.10"
   s.summary      = "Protocol Buffers for Objective-C"
   s.description  = <<-DESC
                       An implementation of Protocol Buffers 2.6 in Objective C.

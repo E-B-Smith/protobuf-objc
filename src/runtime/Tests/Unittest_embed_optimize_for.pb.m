@@ -23,7 +23,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 @interface TestEmbedOptimizedForSize ()
 @property (strong) TestOptimizedForSize* optionalMessage;
-@property (strong) NSMutableArray * repeatedMessageArray;
+@property (strong) NSMutableArray<TestOptimizedForSize*> * repeatedMessageArray;
 @end
 
 @implementation TestEmbedOptimizedForSize
@@ -55,7 +55,7 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
 - (instancetype) defaultInstance {
   return defaultTestEmbedOptimizedForSizeInstance;
 }
-- (NSArray *)repeatedMessage {
+- (NSArray<TestOptimizedForSize*> *)repeatedMessage {
   return repeatedMessageArray;
 }
 - (TestOptimizedForSize*)repeatedMessageAtIndex:(NSUInteger)index {
@@ -305,7 +305,7 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
   resultTestEmbedOptimizedForSize.optionalMessage = [TestOptimizedForSize defaultInstance];
   return self;
 }
-- (NSMutableArray *)repeatedMessage {
+- (NSMutableArray<TestOptimizedForSize*> *)repeatedMessage {
   return resultTestEmbedOptimizedForSize.repeatedMessageArray;
 }
 - (TestOptimizedForSize*)repeatedMessageAtIndex:(NSUInteger)index {
@@ -318,7 +318,7 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
   [resultTestEmbedOptimizedForSize.repeatedMessageArray addObject:value];
   return self;
 }
-- (TestEmbedOptimizedForSizeBuilder *)setRepeatedMessageArray:(NSArray *)array {
+- (TestEmbedOptimizedForSizeBuilder *)setRepeatedMessageArray:(NSArray<TestOptimizedForSize*> *)array {
   resultTestEmbedOptimizedForSize.repeatedMessageArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }

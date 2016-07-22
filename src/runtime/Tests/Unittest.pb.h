@@ -616,16 +616,16 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
 @property (readonly, strong) PBArray * repeatedBool;
 @property (readonly, strong) NSArray * repeatedString;
 @property (readonly, strong) NSArray * repeatedBytes;
-@property (readonly, strong) NSArray * repeatedGroup;
-@property (readonly, strong) NSArray * repeatedNestedMessage;
-@property (readonly, strong) NSArray * repeatedForeignMessage;
-@property (readonly, strong) NSArray * repeatedImportMessage;
+@property (readonly, strong) NSArray<TestAllTypesRepeatedGroup*> * repeatedGroup;
+@property (readonly, strong) NSArray<TestAllTypesNestedMessage*> * repeatedNestedMessage;
+@property (readonly, strong) NSArray<ForeignMessage*> * repeatedForeignMessage;
+@property (readonly, strong) NSArray<ImportMessage*> * repeatedImportMessage;
 @property (readonly, strong) PBArray * repeatedNestedEnum;
 @property (readonly, strong) PBArray * repeatedForeignEnum;
 @property (readonly, strong) PBArray * repeatedImportEnum;
 @property (readonly, strong) NSArray * repeatedStringPiece;
 @property (readonly, strong) NSArray * repeatedCord;
-@property (readonly, strong) NSArray * repeatedLazyMessage;
+@property (readonly, strong) NSArray<TestAllTypesNestedMessage*> * repeatedLazyMessage;
 @property (readonly) SInt32 defaultInt32;
 @property (readonly) SInt64 defaultInt64;
 @property (readonly) UInt32 defaultUint32;
@@ -1106,28 +1106,28 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
 - (TestAllTypesBuilder *)setRepeatedBytesArray:(NSArray *)array;
 - (TestAllTypesBuilder *)clearRepeatedBytes;
 
-- (NSMutableArray *)repeatedGroup;
+- (NSMutableArray<TestAllTypesRepeatedGroup*> *)repeatedGroup;
 - (TestAllTypesRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedGroup:(TestAllTypesRepeatedGroup*)value;
-- (TestAllTypesBuilder *)setRepeatedGroupArray:(NSArray *)array;
+- (TestAllTypesBuilder *)setRepeatedGroupArray:(NSArray<TestAllTypesRepeatedGroup*> *)array;
 - (TestAllTypesBuilder *)clearRepeatedGroup;
 
-- (NSMutableArray *)repeatedNestedMessage;
+- (NSMutableArray<TestAllTypesNestedMessage*> *)repeatedNestedMessage;
 - (TestAllTypesNestedMessage*)repeatedNestedMessageAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedNestedMessage:(TestAllTypesNestedMessage*)value;
-- (TestAllTypesBuilder *)setRepeatedNestedMessageArray:(NSArray *)array;
+- (TestAllTypesBuilder *)setRepeatedNestedMessageArray:(NSArray<TestAllTypesNestedMessage*> *)array;
 - (TestAllTypesBuilder *)clearRepeatedNestedMessage;
 
-- (NSMutableArray *)repeatedForeignMessage;
+- (NSMutableArray<ForeignMessage*> *)repeatedForeignMessage;
 - (ForeignMessage*)repeatedForeignMessageAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedForeignMessage:(ForeignMessage*)value;
-- (TestAllTypesBuilder *)setRepeatedForeignMessageArray:(NSArray *)array;
+- (TestAllTypesBuilder *)setRepeatedForeignMessageArray:(NSArray<ForeignMessage*> *)array;
 - (TestAllTypesBuilder *)clearRepeatedForeignMessage;
 
-- (NSMutableArray *)repeatedImportMessage;
+- (NSMutableArray<ImportMessage*> *)repeatedImportMessage;
 - (ImportMessage*)repeatedImportMessageAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedImportMessage:(ImportMessage*)value;
-- (TestAllTypesBuilder *)setRepeatedImportMessageArray:(NSArray *)array;
+- (TestAllTypesBuilder *)setRepeatedImportMessageArray:(NSArray<ImportMessage*> *)array;
 - (TestAllTypesBuilder *)clearRepeatedImportMessage;
 
 - (PBAppendableArray *)repeatedNestedEnum;
@@ -1163,10 +1163,10 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
 - (TestAllTypesBuilder *)setRepeatedCordArray:(NSArray *)array;
 - (TestAllTypesBuilder *)clearRepeatedCord;
 
-- (NSMutableArray *)repeatedLazyMessage;
+- (NSMutableArray<TestAllTypesNestedMessage*> *)repeatedLazyMessage;
 - (TestAllTypesNestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedLazyMessage:(TestAllTypesNestedMessage*)value;
-- (TestAllTypesBuilder *)setRepeatedLazyMessageArray:(NSArray *)array;
+- (TestAllTypesBuilder *)setRepeatedLazyMessageArray:(NSArray<TestAllTypesNestedMessage*> *)array;
 - (TestAllTypesBuilder *)clearRepeatedLazyMessage;
 
 - (BOOL) hasDefaultInt32;
@@ -2024,7 +2024,7 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
 - (BOOL) hasOptionalMessage;
 - (BOOL) hasDummy;
 @property (readonly, strong) TestRequired* optionalMessage;
-@property (readonly, strong) NSArray * repeatedMessage;
+@property (readonly, strong) NSArray<TestRequired*> * repeatedMessage;
 @property (readonly) SInt32 dummy;
 - (TestRequired*)repeatedMessageAtIndex:(NSUInteger)index;
 
@@ -2070,10 +2070,10 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
 - (TestRequiredForeignBuilder*) mergeOptionalMessage:(TestRequired*) value;
 - (TestRequiredForeignBuilder*) clearOptionalMessage;
 
-- (NSMutableArray *)repeatedMessage;
+- (NSMutableArray<TestRequired*> *)repeatedMessage;
 - (TestRequired*)repeatedMessageAtIndex:(NSUInteger)index;
 - (TestRequiredForeignBuilder *)addRepeatedMessage:(TestRequired*)value;
-- (TestRequiredForeignBuilder *)setRepeatedMessageArray:(NSArray *)array;
+- (TestRequiredForeignBuilder *)setRepeatedMessageArray:(NSArray<TestRequired*> *)array;
 - (TestRequiredForeignBuilder *)clearRepeatedMessage;
 
 - (BOOL) hasDummy;
@@ -2803,7 +2803,7 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
   NSMutableArray * nestedmessageRepeatedForeignmessageArray;
 }
 @property (readonly, strong) PBArray * nestedmessageRepeatedInt32;
-@property (readonly, strong) NSArray * nestedmessageRepeatedForeignmessage;
+@property (readonly, strong) NSArray<ForeignMessage*> * nestedmessageRepeatedForeignmessage;
 - (SInt32)nestedmessageRepeatedInt32AtIndex:(NSUInteger)index;
 - (ForeignMessage*)nestedmessageRepeatedForeignmessageAtIndex:(NSUInteger)index;
 
@@ -2849,10 +2849,10 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
 - (TestNestedMessageHasBitsNestedMessageBuilder *)setNestedmessageRepeatedInt32Values:(const SInt32 *)values count:(NSUInteger)count;
 - (TestNestedMessageHasBitsNestedMessageBuilder *)clearNestedmessageRepeatedInt32;
 
-- (NSMutableArray *)nestedmessageRepeatedForeignmessage;
+- (NSMutableArray<ForeignMessage*> *)nestedmessageRepeatedForeignmessage;
 - (ForeignMessage*)nestedmessageRepeatedForeignmessageAtIndex:(NSUInteger)index;
 - (TestNestedMessageHasBitsNestedMessageBuilder *)addNestedmessageRepeatedForeignmessage:(ForeignMessage*)value;
-- (TestNestedMessageHasBitsNestedMessageBuilder *)setNestedmessageRepeatedForeignmessageArray:(NSArray *)array;
+- (TestNestedMessageHasBitsNestedMessageBuilder *)setNestedmessageRepeatedForeignmessageArray:(NSArray<ForeignMessage*> *)array;
 - (TestNestedMessageHasBitsNestedMessageBuilder *)clearNestedmessageRepeatedForeignmessage;
 @end
 
@@ -2929,7 +2929,7 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
 @property (readonly, strong) PBArray * repeatedPrimitiveField;
 @property (readonly, strong) NSArray * repeatedStringField;
 @property (readonly, strong) PBArray * repeatedEnumField;
-@property (readonly, strong) NSArray * repeatedMessageField;
+@property (readonly, strong) NSArray<ForeignMessage*> * repeatedMessageField;
 @property (readonly, strong) NSArray * repeatedStringPieceField;
 @property (readonly, strong) NSArray * repeatedCordField;
 - (SInt32)repeatedPrimitiveFieldAtIndex:(NSUInteger)index;
@@ -3026,10 +3026,10 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
 - (TestCamelCaseFieldNamesBuilder *)setRepeatedEnumFieldValues:(const ForeignEnum *)values count:(NSUInteger)count;
 - (TestCamelCaseFieldNamesBuilder *)clearRepeatedEnumField;
 
-- (NSMutableArray *)repeatedMessageField;
+- (NSMutableArray<ForeignMessage*> *)repeatedMessageField;
 - (ForeignMessage*)repeatedMessageFieldAtIndex:(NSUInteger)index;
 - (TestCamelCaseFieldNamesBuilder *)addRepeatedMessageField:(ForeignMessage*)value;
-- (TestCamelCaseFieldNamesBuilder *)setRepeatedMessageFieldArray:(NSArray *)array;
+- (TestCamelCaseFieldNamesBuilder *)setRepeatedMessageFieldArray:(NSArray<ForeignMessage*> *)array;
 - (TestCamelCaseFieldNamesBuilder *)clearRepeatedMessageField;
 
 - (NSMutableArray *)repeatedStringPieceField;
@@ -5447,9 +5447,9 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
 - (BOOL) hasOptionalGroup;
 @property (readonly, strong) TestAllTypes* requiredAllTypes;
 @property (readonly, strong) TestAllTypes* optionalAllTypes;
-@property (readonly, strong) NSArray * repeatedAllTypes;
+@property (readonly, strong) NSArray<TestAllTypes*> * repeatedAllTypes;
 @property (readonly, strong) TestParsingMergeOptionalGroup* optionalGroup;
-@property (readonly, strong) NSArray * repeatedGroup;
+@property (readonly, strong) NSArray<TestParsingMergeRepeatedGroup*> * repeatedGroup;
 - (TestAllTypes*)repeatedAllTypesAtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index;
 
@@ -5490,13 +5490,13 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
   NSMutableArray * ext1Array;
   NSMutableArray * ext2Array;
 }
-@property (readonly, strong) NSArray * field1;
-@property (readonly, strong) NSArray * field2;
-@property (readonly, strong) NSArray * field3;
-@property (readonly, strong) NSArray * group1;
-@property (readonly, strong) NSArray * group2;
-@property (readonly, strong) NSArray * ext1;
-@property (readonly, strong) NSArray * ext2;
+@property (readonly, strong) NSArray<TestAllTypes*> * field1;
+@property (readonly, strong) NSArray<TestAllTypes*> * field2;
+@property (readonly, strong) NSArray<TestAllTypes*> * field3;
+@property (readonly, strong) NSArray<TestParsingMergeRepeatedFieldsGeneratorGroup1*> * group1;
+@property (readonly, strong) NSArray<TestParsingMergeRepeatedFieldsGeneratorGroup2*> * group2;
+@property (readonly, strong) NSArray<TestAllTypes*> * ext1;
+@property (readonly, strong) NSArray<TestAllTypes*> * ext2;
 - (TestAllTypes*)field1AtIndex:(NSUInteger)index;
 - (TestAllTypes*)field2AtIndex:(NSUInteger)index;
 - (TestAllTypes*)field3AtIndex:(NSUInteger)index;
@@ -5644,46 +5644,46 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (NSMutableArray *)field1;
+- (NSMutableArray<TestAllTypes*> *)field1;
 - (TestAllTypes*)field1AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addField1:(TestAllTypes*)value;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField1Array:(NSArray *)array;
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField1Array:(NSArray<TestAllTypes*> *)array;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearField1;
 
-- (NSMutableArray *)field2;
+- (NSMutableArray<TestAllTypes*> *)field2;
 - (TestAllTypes*)field2AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addField2:(TestAllTypes*)value;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField2Array:(NSArray *)array;
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField2Array:(NSArray<TestAllTypes*> *)array;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearField2;
 
-- (NSMutableArray *)field3;
+- (NSMutableArray<TestAllTypes*> *)field3;
 - (TestAllTypes*)field3AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addField3:(TestAllTypes*)value;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField3Array:(NSArray *)array;
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField3Array:(NSArray<TestAllTypes*> *)array;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearField3;
 
-- (NSMutableArray *)group1;
+- (NSMutableArray<TestParsingMergeRepeatedFieldsGeneratorGroup1*> *)group1;
 - (TestParsingMergeRepeatedFieldsGeneratorGroup1*)group1AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addGroup1:(TestParsingMergeRepeatedFieldsGeneratorGroup1*)value;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setGroup1Array:(NSArray *)array;
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setGroup1Array:(NSArray<TestParsingMergeRepeatedFieldsGeneratorGroup1*> *)array;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearGroup1;
 
-- (NSMutableArray *)group2;
+- (NSMutableArray<TestParsingMergeRepeatedFieldsGeneratorGroup2*> *)group2;
 - (TestParsingMergeRepeatedFieldsGeneratorGroup2*)group2AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addGroup2:(TestParsingMergeRepeatedFieldsGeneratorGroup2*)value;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setGroup2Array:(NSArray *)array;
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setGroup2Array:(NSArray<TestParsingMergeRepeatedFieldsGeneratorGroup2*> *)array;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearGroup2;
 
-- (NSMutableArray *)ext1;
+- (NSMutableArray<TestAllTypes*> *)ext1;
 - (TestAllTypes*)ext1AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addExt1:(TestAllTypes*)value;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setExt1Array:(NSArray *)array;
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setExt1Array:(NSArray<TestAllTypes*> *)array;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearExt1;
 
-- (NSMutableArray *)ext2;
+- (NSMutableArray<TestAllTypes*> *)ext2;
 - (TestAllTypes*)ext2AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addExt2:(TestAllTypes*)value;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setExt2Array:(NSArray *)array;
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setExt2Array:(NSArray<TestAllTypes*> *)array;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearExt2;
 @end
 
@@ -5822,10 +5822,10 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
 - (TestParsingMergeBuilder*) mergeOptionalAllTypes:(TestAllTypes*) value;
 - (TestParsingMergeBuilder*) clearOptionalAllTypes;
 
-- (NSMutableArray *)repeatedAllTypes;
+- (NSMutableArray<TestAllTypes*> *)repeatedAllTypes;
 - (TestAllTypes*)repeatedAllTypesAtIndex:(NSUInteger)index;
 - (TestParsingMergeBuilder *)addRepeatedAllTypes:(TestAllTypes*)value;
-- (TestParsingMergeBuilder *)setRepeatedAllTypesArray:(NSArray *)array;
+- (TestParsingMergeBuilder *)setRepeatedAllTypesArray:(NSArray<TestAllTypes*> *)array;
 - (TestParsingMergeBuilder *)clearRepeatedAllTypes;
 
 - (BOOL) hasOptionalGroup;
@@ -5835,10 +5835,10 @@ NSString *NSStringFromTestDynamicExtensionsDynamicEnumType(TestDynamicExtensions
 - (TestParsingMergeBuilder*) mergeOptionalGroup:(TestParsingMergeOptionalGroup*) value;
 - (TestParsingMergeBuilder*) clearOptionalGroup;
 
-- (NSMutableArray *)repeatedGroup;
+- (NSMutableArray<TestParsingMergeRepeatedGroup*> *)repeatedGroup;
 - (TestParsingMergeRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index;
 - (TestParsingMergeBuilder *)addRepeatedGroup:(TestParsingMergeRepeatedGroup*)value;
-- (TestParsingMergeBuilder *)setRepeatedGroupArray:(NSArray *)array;
+- (TestParsingMergeBuilder *)setRepeatedGroupArray:(NSArray<TestParsingMergeRepeatedGroup*> *)array;
 - (TestParsingMergeBuilder *)clearRepeatedGroup;
 @end
 

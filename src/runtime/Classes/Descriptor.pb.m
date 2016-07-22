@@ -21,7 +21,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @end
 
 @interface PBFileDescriptorSet ()
-@property (strong) NSMutableArray * fileArray;
+@property (strong) NSMutableArray<PBFileDescriptorProto*> * fileArray;
 @end
 
 @implementation PBFileDescriptorSet
@@ -45,7 +45,7 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBFileDescriptorSetInstance;
 }
-- (NSArray *)file {
+- (NSArray<PBFileDescriptorProto*> *)file {
   return fileArray;
 }
 - (PBFileDescriptorProto*)fileAtIndex:(NSUInteger)index {
@@ -226,7 +226,7 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
     }
   }
 }
-- (NSMutableArray *)file {
+- (NSMutableArray<PBFileDescriptorProto*> *)file {
   return resultFileDescriptorSet.fileArray;
 }
 - (PBFileDescriptorProto*)fileAtIndex:(NSUInteger)index {
@@ -239,7 +239,7 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
   [resultFileDescriptorSet.fileArray addObject:value];
   return self;
 }
-- (PBFileDescriptorSetBuilder *)setFileArray:(NSArray *)array {
+- (PBFileDescriptorSetBuilder *)setFileArray:(NSArray<PBFileDescriptorProto*> *)array {
   resultFileDescriptorSet.fileArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -255,10 +255,10 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
 @property (strong) NSMutableArray * dependencyArray;
 @property (strong) PBAppendableArray * publicDependencyArray;
 @property (strong) PBAppendableArray * weakDependencyArray;
-@property (strong) NSMutableArray * messageTypeArray;
-@property (strong) NSMutableArray * enumTypeArray;
-@property (strong) NSMutableArray * serviceArray;
-@property (strong) NSMutableArray * extensionArray;
+@property (strong) NSMutableArray<PBDescriptorProto*> * messageTypeArray;
+@property (strong) NSMutableArray<PBEnumDescriptorProto*> * enumTypeArray;
+@property (strong) NSMutableArray<PBServiceDescriptorProto*> * serviceArray;
+@property (strong) NSMutableArray<PBFieldDescriptorProto*> * extensionArray;
 @property (strong) PBFileOptions* options;
 @property (strong) PBSourceCodeInfo* sourceCodeInfo;
 @end
@@ -346,25 +346,25 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
 - (SInt32)weakDependencyAtIndex:(NSUInteger)index {
   return [weakDependencyArray int32AtIndex:index];
 }
-- (NSArray *)messageType {
+- (NSArray<PBDescriptorProto*> *)messageType {
   return messageTypeArray;
 }
 - (PBDescriptorProto*)messageTypeAtIndex:(NSUInteger)index {
   return [messageTypeArray objectAtIndex:index];
 }
-- (NSArray *)enumType {
+- (NSArray<PBEnumDescriptorProto*> *)enumType {
   return enumTypeArray;
 }
 - (PBEnumDescriptorProto*)enumTypeAtIndex:(NSUInteger)index {
   return [enumTypeArray objectAtIndex:index];
 }
-- (NSArray *)service {
+- (NSArray<PBServiceDescriptorProto*> *)service {
   return serviceArray;
 }
 - (PBServiceDescriptorProto*)serviceAtIndex:(NSUInteger)index {
   return [serviceArray objectAtIndex:index];
 }
-- (NSArray *)extension {
+- (NSArray<PBFieldDescriptorProto*> *)extension {
   return extensionArray;
 }
 - (PBFieldDescriptorProto*)extensionAtIndex:(NSUInteger)index {
@@ -1008,7 +1008,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   resultFileDescriptorProto.weakDependencyArray = nil;
   return self;
 }
-- (NSMutableArray *)messageType {
+- (NSMutableArray<PBDescriptorProto*> *)messageType {
   return resultFileDescriptorProto.messageTypeArray;
 }
 - (PBDescriptorProto*)messageTypeAtIndex:(NSUInteger)index {
@@ -1021,7 +1021,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   [resultFileDescriptorProto.messageTypeArray addObject:value];
   return self;
 }
-- (PBFileDescriptorProtoBuilder *)setMessageTypeArray:(NSArray *)array {
+- (PBFileDescriptorProtoBuilder *)setMessageTypeArray:(NSArray<PBDescriptorProto*> *)array {
   resultFileDescriptorProto.messageTypeArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -1029,7 +1029,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   resultFileDescriptorProto.messageTypeArray = nil;
   return self;
 }
-- (NSMutableArray *)enumType {
+- (NSMutableArray<PBEnumDescriptorProto*> *)enumType {
   return resultFileDescriptorProto.enumTypeArray;
 }
 - (PBEnumDescriptorProto*)enumTypeAtIndex:(NSUInteger)index {
@@ -1042,7 +1042,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   [resultFileDescriptorProto.enumTypeArray addObject:value];
   return self;
 }
-- (PBFileDescriptorProtoBuilder *)setEnumTypeArray:(NSArray *)array {
+- (PBFileDescriptorProtoBuilder *)setEnumTypeArray:(NSArray<PBEnumDescriptorProto*> *)array {
   resultFileDescriptorProto.enumTypeArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -1050,7 +1050,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   resultFileDescriptorProto.enumTypeArray = nil;
   return self;
 }
-- (NSMutableArray *)service {
+- (NSMutableArray<PBServiceDescriptorProto*> *)service {
   return resultFileDescriptorProto.serviceArray;
 }
 - (PBServiceDescriptorProto*)serviceAtIndex:(NSUInteger)index {
@@ -1063,7 +1063,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   [resultFileDescriptorProto.serviceArray addObject:value];
   return self;
 }
-- (PBFileDescriptorProtoBuilder *)setServiceArray:(NSArray *)array {
+- (PBFileDescriptorProtoBuilder *)setServiceArray:(NSArray<PBServiceDescriptorProto*> *)array {
   resultFileDescriptorProto.serviceArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -1071,7 +1071,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   resultFileDescriptorProto.serviceArray = nil;
   return self;
 }
-- (NSMutableArray *)extension {
+- (NSMutableArray<PBFieldDescriptorProto*> *)extension {
   return resultFileDescriptorProto.extensionArray;
 }
 - (PBFieldDescriptorProto*)extensionAtIndex:(NSUInteger)index {
@@ -1084,7 +1084,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   [resultFileDescriptorProto.extensionArray addObject:value];
   return self;
 }
-- (PBFileDescriptorProtoBuilder *)setExtensionArray:(NSArray *)array {
+- (PBFileDescriptorProtoBuilder *)setExtensionArray:(NSArray<PBFieldDescriptorProto*> *)array {
   resultFileDescriptorProto.extensionArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -1156,12 +1156,12 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
 
 @interface PBDescriptorProto ()
 @property (strong) NSString* name;
-@property (strong) NSMutableArray * fieldArray;
-@property (strong) NSMutableArray * extensionArray;
-@property (strong) NSMutableArray * nestedTypeArray;
-@property (strong) NSMutableArray * enumTypeArray;
-@property (strong) NSMutableArray * extensionRangeArray;
-@property (strong) NSMutableArray * oneofDeclArray;
+@property (strong) NSMutableArray<PBFieldDescriptorProto*> * fieldArray;
+@property (strong) NSMutableArray<PBFieldDescriptorProto*> * extensionArray;
+@property (strong) NSMutableArray<PBDescriptorProto*> * nestedTypeArray;
+@property (strong) NSMutableArray<PBEnumDescriptorProto*> * enumTypeArray;
+@property (strong) NSMutableArray<PBDescriptorProtoExtensionRange*> * extensionRangeArray;
+@property (strong) NSMutableArray<PBOneofDescriptorProto*> * oneofDeclArray;
 @property (strong) PBMessageOptions* options;
 @end
 
@@ -1212,37 +1212,37 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBDescriptorProtoInstance;
 }
-- (NSArray *)field {
+- (NSArray<PBFieldDescriptorProto*> *)field {
   return fieldArray;
 }
 - (PBFieldDescriptorProto*)fieldAtIndex:(NSUInteger)index {
   return [fieldArray objectAtIndex:index];
 }
-- (NSArray *)extension {
+- (NSArray<PBFieldDescriptorProto*> *)extension {
   return extensionArray;
 }
 - (PBFieldDescriptorProto*)extensionAtIndex:(NSUInteger)index {
   return [extensionArray objectAtIndex:index];
 }
-- (NSArray *)nestedType {
+- (NSArray<PBDescriptorProto*> *)nestedType {
   return nestedTypeArray;
 }
 - (PBDescriptorProto*)nestedTypeAtIndex:(NSUInteger)index {
   return [nestedTypeArray objectAtIndex:index];
 }
-- (NSArray *)enumType {
+- (NSArray<PBEnumDescriptorProto*> *)enumType {
   return enumTypeArray;
 }
 - (PBEnumDescriptorProto*)enumTypeAtIndex:(NSUInteger)index {
   return [enumTypeArray objectAtIndex:index];
 }
-- (NSArray *)extensionRange {
+- (NSArray<PBDescriptorProtoExtensionRange*> *)extensionRange {
   return extensionRangeArray;
 }
 - (PBDescriptorProtoExtensionRange*)extensionRangeAtIndex:(NSUInteger)index {
   return [extensionRangeArray objectAtIndex:index];
 }
-- (NSArray *)oneofDecl {
+- (NSArray<PBOneofDescriptorProto*> *)oneofDecl {
   return oneofDeclArray;
 }
 - (PBOneofDescriptorProto*)oneofDeclAtIndex:(NSUInteger)index {
@@ -1951,7 +1951,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   resultDescriptorProto.name = @"";
   return self;
 }
-- (NSMutableArray *)field {
+- (NSMutableArray<PBFieldDescriptorProto*> *)field {
   return resultDescriptorProto.fieldArray;
 }
 - (PBFieldDescriptorProto*)fieldAtIndex:(NSUInteger)index {
@@ -1964,7 +1964,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   [resultDescriptorProto.fieldArray addObject:value];
   return self;
 }
-- (PBDescriptorProtoBuilder *)setFieldArray:(NSArray *)array {
+- (PBDescriptorProtoBuilder *)setFieldArray:(NSArray<PBFieldDescriptorProto*> *)array {
   resultDescriptorProto.fieldArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -1972,7 +1972,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   resultDescriptorProto.fieldArray = nil;
   return self;
 }
-- (NSMutableArray *)extension {
+- (NSMutableArray<PBFieldDescriptorProto*> *)extension {
   return resultDescriptorProto.extensionArray;
 }
 - (PBFieldDescriptorProto*)extensionAtIndex:(NSUInteger)index {
@@ -1985,7 +1985,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   [resultDescriptorProto.extensionArray addObject:value];
   return self;
 }
-- (PBDescriptorProtoBuilder *)setExtensionArray:(NSArray *)array {
+- (PBDescriptorProtoBuilder *)setExtensionArray:(NSArray<PBFieldDescriptorProto*> *)array {
   resultDescriptorProto.extensionArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -1993,7 +1993,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   resultDescriptorProto.extensionArray = nil;
   return self;
 }
-- (NSMutableArray *)nestedType {
+- (NSMutableArray<PBDescriptorProto*> *)nestedType {
   return resultDescriptorProto.nestedTypeArray;
 }
 - (PBDescriptorProto*)nestedTypeAtIndex:(NSUInteger)index {
@@ -2006,7 +2006,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   [resultDescriptorProto.nestedTypeArray addObject:value];
   return self;
 }
-- (PBDescriptorProtoBuilder *)setNestedTypeArray:(NSArray *)array {
+- (PBDescriptorProtoBuilder *)setNestedTypeArray:(NSArray<PBDescriptorProto*> *)array {
   resultDescriptorProto.nestedTypeArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -2014,7 +2014,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   resultDescriptorProto.nestedTypeArray = nil;
   return self;
 }
-- (NSMutableArray *)enumType {
+- (NSMutableArray<PBEnumDescriptorProto*> *)enumType {
   return resultDescriptorProto.enumTypeArray;
 }
 - (PBEnumDescriptorProto*)enumTypeAtIndex:(NSUInteger)index {
@@ -2027,7 +2027,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   [resultDescriptorProto.enumTypeArray addObject:value];
   return self;
 }
-- (PBDescriptorProtoBuilder *)setEnumTypeArray:(NSArray *)array {
+- (PBDescriptorProtoBuilder *)setEnumTypeArray:(NSArray<PBEnumDescriptorProto*> *)array {
   resultDescriptorProto.enumTypeArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -2035,7 +2035,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   resultDescriptorProto.enumTypeArray = nil;
   return self;
 }
-- (NSMutableArray *)extensionRange {
+- (NSMutableArray<PBDescriptorProtoExtensionRange*> *)extensionRange {
   return resultDescriptorProto.extensionRangeArray;
 }
 - (PBDescriptorProtoExtensionRange*)extensionRangeAtIndex:(NSUInteger)index {
@@ -2048,7 +2048,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   [resultDescriptorProto.extensionRangeArray addObject:value];
   return self;
 }
-- (PBDescriptorProtoBuilder *)setExtensionRangeArray:(NSArray *)array {
+- (PBDescriptorProtoBuilder *)setExtensionRangeArray:(NSArray<PBDescriptorProtoExtensionRange*> *)array {
   resultDescriptorProto.extensionRangeArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -2056,7 +2056,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   resultDescriptorProto.extensionRangeArray = nil;
   return self;
 }
-- (NSMutableArray *)oneofDecl {
+- (NSMutableArray<PBOneofDescriptorProto*> *)oneofDecl {
   return resultDescriptorProto.oneofDeclArray;
 }
 - (PBOneofDescriptorProto*)oneofDeclAtIndex:(NSUInteger)index {
@@ -2069,7 +2069,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   [resultDescriptorProto.oneofDeclArray addObject:value];
   return self;
 }
-- (PBDescriptorProtoBuilder *)setOneofDeclArray:(NSArray *)array {
+- (PBDescriptorProtoBuilder *)setOneofDeclArray:(NSArray<PBOneofDescriptorProto*> *)array {
   resultDescriptorProto.oneofDeclArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -3045,7 +3045,7 @@ static PBOneofDescriptorProto* defaultPBOneofDescriptorProtoInstance = nil;
 
 @interface PBEnumDescriptorProto ()
 @property (strong) NSString* name;
-@property (strong) NSMutableArray * valueArray;
+@property (strong) NSMutableArray<PBEnumValueDescriptorProto*> * valueArray;
 @property (strong) PBEnumOptions* options;
 @end
 
@@ -3086,7 +3086,7 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBEnumDescriptorProtoInstance;
 }
-- (NSArray *)value {
+- (NSArray<PBEnumValueDescriptorProto*> *)value {
   return valueArray;
 }
 - (PBEnumValueDescriptorProto*)valueAtIndex:(NSUInteger)index {
@@ -3346,7 +3346,7 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
   resultEnumDescriptorProto.name = @"";
   return self;
 }
-- (NSMutableArray *)value {
+- (NSMutableArray<PBEnumValueDescriptorProto*> *)value {
   return resultEnumDescriptorProto.valueArray;
 }
 - (PBEnumValueDescriptorProto*)valueAtIndex:(NSUInteger)index {
@@ -3359,7 +3359,7 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
   [resultEnumDescriptorProto.valueArray addObject:value];
   return self;
 }
-- (PBEnumDescriptorProtoBuilder *)setValueArray:(NSArray *)array {
+- (PBEnumDescriptorProtoBuilder *)setValueArray:(NSArray<PBEnumValueDescriptorProto*> *)array {
   resultEnumDescriptorProto.valueArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -3734,7 +3734,7 @@ static PBEnumValueDescriptorProto* defaultPBEnumValueDescriptorProtoInstance = n
 
 @interface PBServiceDescriptorProto ()
 @property (strong) NSString* name;
-@property (strong) NSMutableArray * methodArray;
+@property (strong) NSMutableArray<PBMethodDescriptorProto*> * methodArray;
 @property (strong) PBServiceOptions* options;
 @end
 
@@ -3775,7 +3775,7 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBServiceDescriptorProtoInstance;
 }
-- (NSArray *)method {
+- (NSArray<PBMethodDescriptorProto*> *)method {
   return methodArray;
 }
 - (PBMethodDescriptorProto*)methodAtIndex:(NSUInteger)index {
@@ -4035,7 +4035,7 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
   resultServiceDescriptorProto.name = @"";
   return self;
 }
-- (NSMutableArray *)method {
+- (NSMutableArray<PBMethodDescriptorProto*> *)method {
   return resultServiceDescriptorProto.methodArray;
 }
 - (PBMethodDescriptorProto*)methodAtIndex:(NSUInteger)index {
@@ -4048,7 +4048,7 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
   [resultServiceDescriptorProto.methodArray addObject:value];
   return self;
 }
-- (PBServiceDescriptorProtoBuilder *)setMethodArray:(NSArray *)array {
+- (PBServiceDescriptorProtoBuilder *)setMethodArray:(NSArray<PBMethodDescriptorProto*> *)array {
   resultServiceDescriptorProto.methodArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -4482,7 +4482,7 @@ static PBMethodDescriptorProto* defaultPBMethodDescriptorProtoInstance = nil;
 @property BOOL javaGenericServices;
 @property BOOL pyGenericServices;
 @property BOOL deprecated;
-@property (strong) NSMutableArray * uninterpretedOptionArray;
+@property (strong) NSMutableArray<PBUninterpretedOption*> * uninterpretedOptionArray;
 @end
 
 @implementation PBFileOptions
@@ -4629,7 +4629,7 @@ static PBFileOptions* defaultPBFileOptionsInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBFileOptionsInstance;
 }
-- (NSArray *)uninterpretedOption {
+- (NSArray<PBUninterpretedOption*> *)uninterpretedOption {
   return uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -5293,7 +5293,7 @@ NSString *NSStringFromPBFileOptionsOptimizeMode(PBFileOptionsOptimizeMode value)
   resultFileOptions.deprecated = NO;
   return self;
 }
-- (NSMutableArray *)uninterpretedOption {
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption {
   return resultFileOptions.uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -5306,7 +5306,7 @@ NSString *NSStringFromPBFileOptionsOptimizeMode(PBFileOptionsOptimizeMode value)
   [resultFileOptions.uninterpretedOptionArray addObject:value];
   return self;
 }
-- (PBFileOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array {
+- (PBFileOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array {
   resultFileOptions.uninterpretedOptionArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -5320,7 +5320,7 @@ NSString *NSStringFromPBFileOptionsOptimizeMode(PBFileOptionsOptimizeMode value)
 @property BOOL messageSetWireFormat;
 @property BOOL noStandardDescriptorAccessor;
 @property BOOL deprecated;
-@property (strong) NSMutableArray * uninterpretedOptionArray;
+@property (strong) NSMutableArray<PBUninterpretedOption*> * uninterpretedOptionArray;
 @end
 
 @implementation PBMessageOptions
@@ -5383,7 +5383,7 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBMessageOptionsInstance;
 }
-- (NSArray *)uninterpretedOption {
+- (NSArray<PBUninterpretedOption*> *)uninterpretedOption {
   return uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -5699,7 +5699,7 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
   resultMessageOptions.deprecated = NO;
   return self;
 }
-- (NSMutableArray *)uninterpretedOption {
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption {
   return resultMessageOptions.uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -5712,7 +5712,7 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
   [resultMessageOptions.uninterpretedOptionArray addObject:value];
   return self;
 }
-- (PBMessageOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array {
+- (PBMessageOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array {
   resultMessageOptions.uninterpretedOptionArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -5729,7 +5729,7 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
 @property BOOL deprecated;
 @property (strong) NSString* experimentalMapKey;
 @property BOOL weak;
-@property (strong) NSMutableArray * uninterpretedOptionArray;
+@property (strong) NSMutableArray<PBUninterpretedOption*> * uninterpretedOptionArray;
 @end
 
 @implementation PBFieldOptions
@@ -5821,7 +5821,7 @@ static PBFieldOptions* defaultPBFieldOptionsInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBFieldOptionsInstance;
 }
-- (NSArray *)uninterpretedOption {
+- (NSArray<PBUninterpretedOption*> *)uninterpretedOption {
   return uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -6285,7 +6285,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value) {
   resultFieldOptions.weak = NO;
   return self;
 }
-- (NSMutableArray *)uninterpretedOption {
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption {
   return resultFieldOptions.uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -6298,7 +6298,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value) {
   [resultFieldOptions.uninterpretedOptionArray addObject:value];
   return self;
 }
-- (PBFieldOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array {
+- (PBFieldOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array {
   resultFieldOptions.uninterpretedOptionArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -6311,7 +6311,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value) {
 @interface PBEnumOptions ()
 @property BOOL allowAlias;
 @property BOOL deprecated;
-@property (strong) NSMutableArray * uninterpretedOptionArray;
+@property (strong) NSMutableArray<PBUninterpretedOption*> * uninterpretedOptionArray;
 @end
 
 @implementation PBEnumOptions
@@ -6361,7 +6361,7 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBEnumOptionsInstance;
 }
-- (NSArray *)uninterpretedOption {
+- (NSArray<PBUninterpretedOption*> *)uninterpretedOption {
   return uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -6637,7 +6637,7 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
   resultEnumOptions.deprecated = NO;
   return self;
 }
-- (NSMutableArray *)uninterpretedOption {
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption {
   return resultEnumOptions.uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -6650,7 +6650,7 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
   [resultEnumOptions.uninterpretedOptionArray addObject:value];
   return self;
 }
-- (PBEnumOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array {
+- (PBEnumOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array {
   resultEnumOptions.uninterpretedOptionArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -6662,7 +6662,7 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
 
 @interface PBEnumValueOptions ()
 @property BOOL deprecated;
-@property (strong) NSMutableArray * uninterpretedOptionArray;
+@property (strong) NSMutableArray<PBUninterpretedOption*> * uninterpretedOptionArray;
 @end
 
 @implementation PBEnumValueOptions
@@ -6699,7 +6699,7 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBEnumValueOptionsInstance;
 }
-- (NSArray *)uninterpretedOption {
+- (NSArray<PBUninterpretedOption*> *)uninterpretedOption {
   return uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -6935,7 +6935,7 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
   resultEnumValueOptions.deprecated = NO;
   return self;
 }
-- (NSMutableArray *)uninterpretedOption {
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption {
   return resultEnumValueOptions.uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -6948,7 +6948,7 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
   [resultEnumValueOptions.uninterpretedOptionArray addObject:value];
   return self;
 }
-- (PBEnumValueOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array {
+- (PBEnumValueOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array {
   resultEnumValueOptions.uninterpretedOptionArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -6960,7 +6960,7 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
 
 @interface PBServiceOptions ()
 @property BOOL deprecated;
-@property (strong) NSMutableArray * uninterpretedOptionArray;
+@property (strong) NSMutableArray<PBUninterpretedOption*> * uninterpretedOptionArray;
 @end
 
 @implementation PBServiceOptions
@@ -6997,7 +6997,7 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBServiceOptionsInstance;
 }
-- (NSArray *)uninterpretedOption {
+- (NSArray<PBUninterpretedOption*> *)uninterpretedOption {
   return uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -7233,7 +7233,7 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
   resultServiceOptions.deprecated = NO;
   return self;
 }
-- (NSMutableArray *)uninterpretedOption {
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption {
   return resultServiceOptions.uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -7246,7 +7246,7 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
   [resultServiceOptions.uninterpretedOptionArray addObject:value];
   return self;
 }
-- (PBServiceOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array {
+- (PBServiceOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array {
   resultServiceOptions.uninterpretedOptionArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -7258,7 +7258,7 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
 
 @interface PBMethodOptions ()
 @property BOOL deprecated;
-@property (strong) NSMutableArray * uninterpretedOptionArray;
+@property (strong) NSMutableArray<PBUninterpretedOption*> * uninterpretedOptionArray;
 @end
 
 @implementation PBMethodOptions
@@ -7295,7 +7295,7 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBMethodOptionsInstance;
 }
-- (NSArray *)uninterpretedOption {
+- (NSArray<PBUninterpretedOption*> *)uninterpretedOption {
   return uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -7531,7 +7531,7 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
   resultMethodOptions.deprecated = NO;
   return self;
 }
-- (NSMutableArray *)uninterpretedOption {
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption {
   return resultMethodOptions.uninterpretedOptionArray;
 }
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index {
@@ -7544,7 +7544,7 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
   [resultMethodOptions.uninterpretedOptionArray addObject:value];
   return self;
 }
-- (PBMethodOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array {
+- (PBMethodOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array {
   resultMethodOptions.uninterpretedOptionArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -7555,7 +7555,7 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
 @end
 
 @interface PBUninterpretedOption ()
-@property (strong) NSMutableArray * nameArray;
+@property (strong) NSMutableArray<PBUninterpretedOptionNamePart*> * nameArray;
 @property (strong) NSString* identifierValue;
 @property UInt64 positiveIntValue;
 @property SInt64 negativeIntValue;
@@ -7633,7 +7633,7 @@ static PBUninterpretedOption* defaultPBUninterpretedOptionInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBUninterpretedOptionInstance;
 }
-- (NSArray *)name {
+- (NSArray<PBUninterpretedOptionNamePart*> *)name {
   return nameArray;
 }
 - (PBUninterpretedOptionNamePart*)nameAtIndex:(NSUInteger)index {
@@ -8224,7 +8224,7 @@ static PBUninterpretedOptionNamePart* defaultPBUninterpretedOptionNamePartInstan
     }
   }
 }
-- (NSMutableArray *)name {
+- (NSMutableArray<PBUninterpretedOptionNamePart*> *)name {
   return resultUninterpretedOption.nameArray;
 }
 - (PBUninterpretedOptionNamePart*)nameAtIndex:(NSUInteger)index {
@@ -8237,7 +8237,7 @@ static PBUninterpretedOptionNamePart* defaultPBUninterpretedOptionNamePartInstan
   [resultUninterpretedOption.nameArray addObject:value];
   return self;
 }
-- (PBUninterpretedOptionBuilder *)setNameArray:(NSArray *)array {
+- (PBUninterpretedOptionBuilder *)setNameArray:(NSArray<PBUninterpretedOptionNamePart*> *)array {
   resultUninterpretedOption.nameArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -8344,7 +8344,7 @@ static PBUninterpretedOptionNamePart* defaultPBUninterpretedOptionNamePartInstan
 @end
 
 @interface PBSourceCodeInfo ()
-@property (strong) NSMutableArray * locationArray;
+@property (strong) NSMutableArray<PBSourceCodeInfoLocation*> * locationArray;
 @end
 
 @implementation PBSourceCodeInfo
@@ -8368,7 +8368,7 @@ static PBSourceCodeInfo* defaultPBSourceCodeInfoInstance = nil;
 - (instancetype) defaultInstance {
   return defaultPBSourceCodeInfoInstance;
 }
-- (NSArray *)location {
+- (NSArray<PBSourceCodeInfoLocation*> *)location {
   return locationArray;
 }
 - (PBSourceCodeInfoLocation*)locationAtIndex:(NSUInteger)index {
@@ -8974,7 +8974,7 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
     }
   }
 }
-- (NSMutableArray *)location {
+- (NSMutableArray<PBSourceCodeInfoLocation*> *)location {
   return resultSourceCodeInfo.locationArray;
 }
 - (PBSourceCodeInfoLocation*)locationAtIndex:(NSUInteger)index {
@@ -8987,7 +8987,7 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
   [resultSourceCodeInfo.locationArray addObject:value];
   return self;
 }
-- (PBSourceCodeInfoBuilder *)setLocationArray:(NSArray *)array {
+- (PBSourceCodeInfoBuilder *)setLocationArray:(NSArray<PBSourceCodeInfoLocation*> *)array {
   resultSourceCodeInfo.locationArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }

@@ -224,7 +224,7 @@
 @private
   NSMutableArray * itemArray;
 }
-@property (readonly, strong) NSArray * item;
+@property (readonly, strong) NSArray<RawMessageSetItem*> * item;
 - (RawMessageSetItem*)itemAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -322,10 +322,10 @@
 - (RawMessageSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (RawMessageSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (NSMutableArray *)item;
+- (NSMutableArray<RawMessageSetItem*> *)item;
 - (RawMessageSetItem*)itemAtIndex:(NSUInteger)index;
 - (RawMessageSetBuilder *)addItem:(RawMessageSetItem*)value;
-- (RawMessageSetBuilder *)setItemArray:(NSArray *)array;
+- (RawMessageSetBuilder *)setItemArray:(NSArray<RawMessageSetItem*> *)array;
 - (RawMessageSetBuilder *)clearItem;
 @end
 

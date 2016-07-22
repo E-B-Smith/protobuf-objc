@@ -111,7 +111,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 @private
   NSMutableArray * fileArray;
 }
-@property (readonly, strong) NSArray * file;
+@property (readonly, strong) NSArray<PBFileDescriptorProto*> * file;
 - (PBFileDescriptorProto*)fileAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -149,10 +149,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBFileDescriptorSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (PBFileDescriptorSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (NSMutableArray *)file;
+- (NSMutableArray<PBFileDescriptorProto*> *)file;
 - (PBFileDescriptorProto*)fileAtIndex:(NSUInteger)index;
 - (PBFileDescriptorSetBuilder *)addFile:(PBFileDescriptorProto*)value;
-- (PBFileDescriptorSetBuilder *)setFileArray:(NSArray *)array;
+- (PBFileDescriptorSetBuilder *)setFileArray:(NSArray<PBFileDescriptorProto*> *)array;
 - (PBFileDescriptorSetBuilder *)clearFile;
 @end
 
@@ -194,10 +194,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 @property (readonly, strong) NSArray * dependency;
 @property (readonly, strong) PBArray * publicDependency;
 @property (readonly, strong) PBArray * weakDependency;
-@property (readonly, strong) NSArray * messageType;
-@property (readonly, strong) NSArray * enumType;
-@property (readonly, strong) NSArray * service;
-@property (readonly, strong) NSArray * extension;
+@property (readonly, strong) NSArray<PBDescriptorProto*> * messageType;
+@property (readonly, strong) NSArray<PBEnumDescriptorProto*> * enumType;
+@property (readonly, strong) NSArray<PBServiceDescriptorProto*> * service;
+@property (readonly, strong) NSArray<PBFieldDescriptorProto*> * extension;
 @property (readonly, strong) PBFileOptions* options;
 @property (readonly, strong) PBSourceCodeInfo* sourceCodeInfo;
 - (NSString*)dependencyAtIndex:(NSUInteger)index;
@@ -273,28 +273,28 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBFileDescriptorProtoBuilder *)setWeakDependencyValues:(const SInt32 *)values count:(NSUInteger)count;
 - (PBFileDescriptorProtoBuilder *)clearWeakDependency;
 
-- (NSMutableArray *)messageType;
+- (NSMutableArray<PBDescriptorProto*> *)messageType;
 - (PBDescriptorProto*)messageTypeAtIndex:(NSUInteger)index;
 - (PBFileDescriptorProtoBuilder *)addMessageType:(PBDescriptorProto*)value;
-- (PBFileDescriptorProtoBuilder *)setMessageTypeArray:(NSArray *)array;
+- (PBFileDescriptorProtoBuilder *)setMessageTypeArray:(NSArray<PBDescriptorProto*> *)array;
 - (PBFileDescriptorProtoBuilder *)clearMessageType;
 
-- (NSMutableArray *)enumType;
+- (NSMutableArray<PBEnumDescriptorProto*> *)enumType;
 - (PBEnumDescriptorProto*)enumTypeAtIndex:(NSUInteger)index;
 - (PBFileDescriptorProtoBuilder *)addEnumType:(PBEnumDescriptorProto*)value;
-- (PBFileDescriptorProtoBuilder *)setEnumTypeArray:(NSArray *)array;
+- (PBFileDescriptorProtoBuilder *)setEnumTypeArray:(NSArray<PBEnumDescriptorProto*> *)array;
 - (PBFileDescriptorProtoBuilder *)clearEnumType;
 
-- (NSMutableArray *)service;
+- (NSMutableArray<PBServiceDescriptorProto*> *)service;
 - (PBServiceDescriptorProto*)serviceAtIndex:(NSUInteger)index;
 - (PBFileDescriptorProtoBuilder *)addService:(PBServiceDescriptorProto*)value;
-- (PBFileDescriptorProtoBuilder *)setServiceArray:(NSArray *)array;
+- (PBFileDescriptorProtoBuilder *)setServiceArray:(NSArray<PBServiceDescriptorProto*> *)array;
 - (PBFileDescriptorProtoBuilder *)clearService;
 
-- (NSMutableArray *)extension;
+- (NSMutableArray<PBFieldDescriptorProto*> *)extension;
 - (PBFieldDescriptorProto*)extensionAtIndex:(NSUInteger)index;
 - (PBFileDescriptorProtoBuilder *)addExtension:(PBFieldDescriptorProto*)value;
-- (PBFileDescriptorProtoBuilder *)setExtensionArray:(NSArray *)array;
+- (PBFileDescriptorProtoBuilder *)setExtensionArray:(NSArray<PBFieldDescriptorProto*> *)array;
 - (PBFileDescriptorProtoBuilder *)clearExtension;
 
 - (BOOL) hasOptions;
@@ -336,12 +336,12 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (BOOL) hasName;
 - (BOOL) hasOptions;
 @property (readonly, strong) NSString* name;
-@property (readonly, strong) NSArray * field;
-@property (readonly, strong) NSArray * extension;
-@property (readonly, strong) NSArray * nestedType;
-@property (readonly, strong) NSArray * enumType;
-@property (readonly, strong) NSArray * extensionRange;
-@property (readonly, strong) NSArray * oneofDecl;
+@property (readonly, strong) NSArray<PBFieldDescriptorProto*> * field;
+@property (readonly, strong) NSArray<PBFieldDescriptorProto*> * extension;
+@property (readonly, strong) NSArray<PBDescriptorProto*> * nestedType;
+@property (readonly, strong) NSArray<PBEnumDescriptorProto*> * enumType;
+@property (readonly, strong) NSArray<PBDescriptorProtoExtensionRange*> * extensionRange;
+@property (readonly, strong) NSArray<PBOneofDescriptorProto*> * oneofDecl;
 @property (readonly, strong) PBMessageOptions* options;
 - (PBFieldDescriptorProto*)fieldAtIndex:(NSUInteger)index;
 - (PBFieldDescriptorProto*)extensionAtIndex:(NSUInteger)index;
@@ -450,40 +450,40 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBDescriptorProtoBuilder*) setName:(NSString*) value;
 - (PBDescriptorProtoBuilder*) clearName;
 
-- (NSMutableArray *)field;
+- (NSMutableArray<PBFieldDescriptorProto*> *)field;
 - (PBFieldDescriptorProto*)fieldAtIndex:(NSUInteger)index;
 - (PBDescriptorProtoBuilder *)addField:(PBFieldDescriptorProto*)value;
-- (PBDescriptorProtoBuilder *)setFieldArray:(NSArray *)array;
+- (PBDescriptorProtoBuilder *)setFieldArray:(NSArray<PBFieldDescriptorProto*> *)array;
 - (PBDescriptorProtoBuilder *)clearField;
 
-- (NSMutableArray *)extension;
+- (NSMutableArray<PBFieldDescriptorProto*> *)extension;
 - (PBFieldDescriptorProto*)extensionAtIndex:(NSUInteger)index;
 - (PBDescriptorProtoBuilder *)addExtension:(PBFieldDescriptorProto*)value;
-- (PBDescriptorProtoBuilder *)setExtensionArray:(NSArray *)array;
+- (PBDescriptorProtoBuilder *)setExtensionArray:(NSArray<PBFieldDescriptorProto*> *)array;
 - (PBDescriptorProtoBuilder *)clearExtension;
 
-- (NSMutableArray *)nestedType;
+- (NSMutableArray<PBDescriptorProto*> *)nestedType;
 - (PBDescriptorProto*)nestedTypeAtIndex:(NSUInteger)index;
 - (PBDescriptorProtoBuilder *)addNestedType:(PBDescriptorProto*)value;
-- (PBDescriptorProtoBuilder *)setNestedTypeArray:(NSArray *)array;
+- (PBDescriptorProtoBuilder *)setNestedTypeArray:(NSArray<PBDescriptorProto*> *)array;
 - (PBDescriptorProtoBuilder *)clearNestedType;
 
-- (NSMutableArray *)enumType;
+- (NSMutableArray<PBEnumDescriptorProto*> *)enumType;
 - (PBEnumDescriptorProto*)enumTypeAtIndex:(NSUInteger)index;
 - (PBDescriptorProtoBuilder *)addEnumType:(PBEnumDescriptorProto*)value;
-- (PBDescriptorProtoBuilder *)setEnumTypeArray:(NSArray *)array;
+- (PBDescriptorProtoBuilder *)setEnumTypeArray:(NSArray<PBEnumDescriptorProto*> *)array;
 - (PBDescriptorProtoBuilder *)clearEnumType;
 
-- (NSMutableArray *)extensionRange;
+- (NSMutableArray<PBDescriptorProtoExtensionRange*> *)extensionRange;
 - (PBDescriptorProtoExtensionRange*)extensionRangeAtIndex:(NSUInteger)index;
 - (PBDescriptorProtoBuilder *)addExtensionRange:(PBDescriptorProtoExtensionRange*)value;
-- (PBDescriptorProtoBuilder *)setExtensionRangeArray:(NSArray *)array;
+- (PBDescriptorProtoBuilder *)setExtensionRangeArray:(NSArray<PBDescriptorProtoExtensionRange*> *)array;
 - (PBDescriptorProtoBuilder *)clearExtensionRange;
 
-- (NSMutableArray *)oneofDecl;
+- (NSMutableArray<PBOneofDescriptorProto*> *)oneofDecl;
 - (PBOneofDescriptorProto*)oneofDeclAtIndex:(NSUInteger)index;
 - (PBDescriptorProtoBuilder *)addOneofDecl:(PBOneofDescriptorProto*)value;
-- (PBDescriptorProtoBuilder *)setOneofDeclArray:(NSArray *)array;
+- (PBDescriptorProtoBuilder *)setOneofDeclArray:(NSArray<PBOneofDescriptorProto*> *)array;
 - (PBDescriptorProtoBuilder *)clearOneofDecl;
 
 - (BOOL) hasOptions;
@@ -690,7 +690,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (BOOL) hasName;
 - (BOOL) hasOptions;
 @property (readonly, strong) NSString* name;
-@property (readonly, strong) NSArray * value;
+@property (readonly, strong) NSArray<PBEnumValueDescriptorProto*> * value;
 @property (readonly, strong) PBEnumOptions* options;
 - (PBEnumValueDescriptorProto*)valueAtIndex:(NSUInteger)index;
 
@@ -734,10 +734,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBEnumDescriptorProtoBuilder*) setName:(NSString*) value;
 - (PBEnumDescriptorProtoBuilder*) clearName;
 
-- (NSMutableArray *)value;
+- (NSMutableArray<PBEnumValueDescriptorProto*> *)value;
 - (PBEnumValueDescriptorProto*)valueAtIndex:(NSUInteger)index;
 - (PBEnumDescriptorProtoBuilder *)addValue:(PBEnumValueDescriptorProto*)value;
-- (PBEnumDescriptorProtoBuilder *)setValueArray:(NSArray *)array;
+- (PBEnumDescriptorProtoBuilder *)setValueArray:(NSArray<PBEnumValueDescriptorProto*> *)array;
 - (PBEnumDescriptorProtoBuilder *)clearValue;
 
 - (BOOL) hasOptions;
@@ -834,7 +834,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (BOOL) hasName;
 - (BOOL) hasOptions;
 @property (readonly, strong) NSString* name;
-@property (readonly, strong) NSArray * method;
+@property (readonly, strong) NSArray<PBMethodDescriptorProto*> * method;
 @property (readonly, strong) PBServiceOptions* options;
 - (PBMethodDescriptorProto*)methodAtIndex:(NSUInteger)index;
 
@@ -878,10 +878,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBServiceDescriptorProtoBuilder*) setName:(NSString*) value;
 - (PBServiceDescriptorProtoBuilder*) clearName;
 
-- (NSMutableArray *)method;
+- (NSMutableArray<PBMethodDescriptorProto*> *)method;
 - (PBMethodDescriptorProto*)methodAtIndex:(NSUInteger)index;
 - (PBServiceDescriptorProtoBuilder *)addMethod:(PBMethodDescriptorProto*)value;
-- (PBServiceDescriptorProtoBuilder *)setMethodArray:(NSArray *)array;
+- (PBServiceDescriptorProtoBuilder *)setMethodArray:(NSArray<PBMethodDescriptorProto*> *)array;
 - (PBServiceDescriptorProtoBuilder *)clearMethod;
 
 - (BOOL) hasOptions;
@@ -1034,7 +1034,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (BOOL) javaGenericServices;
 - (BOOL) pyGenericServices;
 - (BOOL) deprecated;
-@property (readonly, strong) NSArray * uninterpretedOption;
+@property (readonly, strong) NSArray<PBUninterpretedOption*> * uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -1127,10 +1127,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBFileOptionsBuilder*) setDeprecated:(BOOL) value;
 - (PBFileOptionsBuilder*) clearDeprecated;
 
-- (NSMutableArray *)uninterpretedOption;
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 - (PBFileOptionsBuilder *)addUninterpretedOption:(PBUninterpretedOption*)value;
-- (PBFileOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array;
+- (PBFileOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array;
 - (PBFileOptionsBuilder *)clearUninterpretedOption;
 @end
 
@@ -1154,7 +1154,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (BOOL) messageSetWireFormat;
 - (BOOL) noStandardDescriptorAccessor;
 - (BOOL) deprecated;
-@property (readonly, strong) NSArray * uninterpretedOption;
+@property (readonly, strong) NSArray<PBUninterpretedOption*> * uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -1207,10 +1207,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBMessageOptionsBuilder*) setDeprecated:(BOOL) value;
 - (PBMessageOptionsBuilder*) clearDeprecated;
 
-- (NSMutableArray *)uninterpretedOption;
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 - (PBMessageOptionsBuilder *)addUninterpretedOption:(PBUninterpretedOption*)value;
-- (PBMessageOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array;
+- (PBMessageOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array;
 - (PBMessageOptionsBuilder *)clearUninterpretedOption;
 @end
 
@@ -1249,7 +1249,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (BOOL) deprecated;
 @property (readonly, strong) NSString* experimentalMapKey;
 - (BOOL) weak;
-@property (readonly, strong) NSArray * uninterpretedOption;
+@property (readonly, strong) NSArray<PBUninterpretedOption*> * uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -1317,10 +1317,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBFieldOptionsBuilder*) setWeak:(BOOL) value;
 - (PBFieldOptionsBuilder*) clearWeak;
 
-- (NSMutableArray *)uninterpretedOption;
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 - (PBFieldOptionsBuilder *)addUninterpretedOption:(PBUninterpretedOption*)value;
-- (PBFieldOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array;
+- (PBFieldOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array;
 - (PBFieldOptionsBuilder *)clearUninterpretedOption;
 @end
 
@@ -1339,7 +1339,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (BOOL) hasDeprecated;
 - (BOOL) allowAlias;
 - (BOOL) deprecated;
-@property (readonly, strong) NSArray * uninterpretedOption;
+@property (readonly, strong) NSArray<PBUninterpretedOption*> * uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -1387,10 +1387,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBEnumOptionsBuilder*) setDeprecated:(BOOL) value;
 - (PBEnumOptionsBuilder*) clearDeprecated;
 
-- (NSMutableArray *)uninterpretedOption;
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 - (PBEnumOptionsBuilder *)addUninterpretedOption:(PBUninterpretedOption*)value;
-- (PBEnumOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array;
+- (PBEnumOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array;
 - (PBEnumOptionsBuilder *)clearUninterpretedOption;
 @end
 
@@ -1404,7 +1404,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 }
 - (BOOL) hasDeprecated;
 - (BOOL) deprecated;
-@property (readonly, strong) NSArray * uninterpretedOption;
+@property (readonly, strong) NSArray<PBUninterpretedOption*> * uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -1447,10 +1447,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBEnumValueOptionsBuilder*) setDeprecated:(BOOL) value;
 - (PBEnumValueOptionsBuilder*) clearDeprecated;
 
-- (NSMutableArray *)uninterpretedOption;
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 - (PBEnumValueOptionsBuilder *)addUninterpretedOption:(PBUninterpretedOption*)value;
-- (PBEnumValueOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array;
+- (PBEnumValueOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array;
 - (PBEnumValueOptionsBuilder *)clearUninterpretedOption;
 @end
 
@@ -1464,7 +1464,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 }
 - (BOOL) hasDeprecated;
 - (BOOL) deprecated;
-@property (readonly, strong) NSArray * uninterpretedOption;
+@property (readonly, strong) NSArray<PBUninterpretedOption*> * uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -1507,10 +1507,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBServiceOptionsBuilder*) setDeprecated:(BOOL) value;
 - (PBServiceOptionsBuilder*) clearDeprecated;
 
-- (NSMutableArray *)uninterpretedOption;
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 - (PBServiceOptionsBuilder *)addUninterpretedOption:(PBUninterpretedOption*)value;
-- (PBServiceOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array;
+- (PBServiceOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array;
 - (PBServiceOptionsBuilder *)clearUninterpretedOption;
 @end
 
@@ -1524,7 +1524,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 }
 - (BOOL) hasDeprecated;
 - (BOOL) deprecated;
-@property (readonly, strong) NSArray * uninterpretedOption;
+@property (readonly, strong) NSArray<PBUninterpretedOption*> * uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -1567,10 +1567,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBMethodOptionsBuilder*) setDeprecated:(BOOL) value;
 - (PBMethodOptionsBuilder*) clearDeprecated;
 
-- (NSMutableArray *)uninterpretedOption;
+- (NSMutableArray<PBUninterpretedOption*> *)uninterpretedOption;
 - (PBUninterpretedOption*)uninterpretedOptionAtIndex:(NSUInteger)index;
 - (PBMethodOptionsBuilder *)addUninterpretedOption:(PBUninterpretedOption*)value;
-- (PBMethodOptionsBuilder *)setUninterpretedOptionArray:(NSArray *)array;
+- (PBMethodOptionsBuilder *)setUninterpretedOptionArray:(NSArray<PBUninterpretedOption*> *)array;
 - (PBMethodOptionsBuilder *)clearUninterpretedOption;
 @end
 
@@ -1603,7 +1603,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (BOOL) hasDoubleValue;
 - (BOOL) hasStringValue;
 - (BOOL) hasAggregateValue;
-@property (readonly, strong) NSArray * name;
+@property (readonly, strong) NSArray<PBUninterpretedOptionNamePart*> * name;
 @property (readonly, strong) NSString* identifierValue;
 @property (readonly) UInt64 positiveIntValue;
 @property (readonly) SInt64 negativeIntValue;
@@ -1707,10 +1707,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBUninterpretedOptionBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (PBUninterpretedOptionBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (NSMutableArray *)name;
+- (NSMutableArray<PBUninterpretedOptionNamePart*> *)name;
 - (PBUninterpretedOptionNamePart*)nameAtIndex:(NSUInteger)index;
 - (PBUninterpretedOptionBuilder *)addName:(PBUninterpretedOptionNamePart*)value;
-- (PBUninterpretedOptionBuilder *)setNameArray:(NSArray *)array;
+- (PBUninterpretedOptionBuilder *)setNameArray:(NSArray<PBUninterpretedOptionNamePart*> *)array;
 - (PBUninterpretedOptionBuilder *)clearName;
 
 - (BOOL) hasIdentifierValue;
@@ -1749,7 +1749,7 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 @private
   NSMutableArray * locationArray;
 }
-@property (readonly, strong) NSArray * location;
+@property (readonly, strong) NSArray<PBSourceCodeInfoLocation*> * location;
 - (PBSourceCodeInfoLocation*)locationAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -1871,10 +1871,10 @@ NSString *NSStringFromPBFieldOptionsCType(PBFieldOptionsCType value);
 - (PBSourceCodeInfoBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (PBSourceCodeInfoBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (NSMutableArray *)location;
+- (NSMutableArray<PBSourceCodeInfoLocation*> *)location;
 - (PBSourceCodeInfoLocation*)locationAtIndex:(NSUInteger)index;
 - (PBSourceCodeInfoBuilder *)addLocation:(PBSourceCodeInfoLocation*)value;
-- (PBSourceCodeInfoBuilder *)setLocationArray:(NSArray *)array;
+- (PBSourceCodeInfoBuilder *)setLocationArray:(NSArray<PBSourceCodeInfoLocation*> *)array;
 - (PBSourceCodeInfoBuilder *)clearLocation;
 @end
 

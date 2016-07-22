@@ -298,13 +298,13 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     void RepeatedMessageFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
 
-        printer->Print(variables_, "@property (readonly, strong) NSArray * $name$;\n");
+        printer->Print(variables_, "@property (readonly, strong) NSArray<$storage_type$> * $name$;\n");
     }
 
 
     void RepeatedMessageFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
 
-        printer->Print(variables_,"@property (strong)$storage_attribute$ NSMutableArray * $list_name$;\n");
+        printer->Print(variables_,"@property (strong)$storage_attribute$ NSMutableArray<$storage_type$> * $list_name$;\n");
     }
 
 
@@ -327,7 +327,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         {
 
             printer->Print(variables_,
-                           "- (NSArray *)$name$ {\n"
+                           "- (NSArray<$storage_type$> *)$name$ {\n"
                            "  return $list_name$;\n"
                            "}\n"
                            "- ($storage_type$)$name$AtIndex:(NSUInteger)index {\n"
@@ -342,10 +342,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         //check if object array vs primitive array
         if(isObjectArray(descriptor_)){
             printer->Print(variables_,
-                           "- (NSMutableArray *)$name$;\n"
+                           "- (NSMutableArray<$storage_type$> *)$name$;\n"
                            "- ($storage_type$)$name$AtIndex:(NSUInteger)index;\n"
                            "- ($classname$Builder *)add$capitalized_name$:($storage_type$)value;\n"
-                           "- ($classname$Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
+                           "- ($classname$Builder *)set$capitalized_name$Array:(NSArray<$storage_type$> *)array;\n"
                            "- ($classname$Builder *)clear$capitalized_name$;\n");
         }else{
             printer->Print(variables_,
@@ -361,7 +361,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     void RepeatedMessageFieldGenerator::GenerateBuilderMembersSource(io::Printer* printer) const {
         printer->Print(variables_,
-                       "- (NSMutableArray *)$name$ {\n"
+                       "- (NSMutableArray<$storage_type$> *)$name$ {\n"
                        "  return result$classname_capitalized$.$list_name$;\n"
                        "}\n"
                        "- ($storage_type$)$name$AtIndex:(NSUInteger)index {\n"
@@ -374,7 +374,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
                        "  [result$classname_capitalized$.$list_name$ addObject:value];\n"
                        "  return self;\n"
                        "}\n"
-                       "- ($classname$Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
+                       "- ($classname$Builder *)set$capitalized_name$Array:(NSArray<$storage_type$> *)array {\n"
                        "  result$classname_capitalized$.$list_name$ = [[NSMutableArray alloc]initWithArray:array];\n"
                        "  return self;\n"
                        "}\n"

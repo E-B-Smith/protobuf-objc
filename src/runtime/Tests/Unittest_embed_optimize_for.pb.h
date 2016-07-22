@@ -176,7 +176,7 @@
 }
 - (BOOL) hasOptionalMessage;
 @property (readonly, strong) TestOptimizedForSize* optionalMessage;
-@property (readonly, strong) NSArray * repeatedMessage;
+@property (readonly, strong) NSArray<TestOptimizedForSize*> * repeatedMessage;
 - (TestOptimizedForSize*)repeatedMessageAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -221,10 +221,10 @@
 - (TestEmbedOptimizedForSizeBuilder*) mergeOptionalMessage:(TestOptimizedForSize*) value;
 - (TestEmbedOptimizedForSizeBuilder*) clearOptionalMessage;
 
-- (NSMutableArray *)repeatedMessage;
+- (NSMutableArray<TestOptimizedForSize*> *)repeatedMessage;
 - (TestOptimizedForSize*)repeatedMessageAtIndex:(NSUInteger)index;
 - (TestEmbedOptimizedForSizeBuilder *)addRepeatedMessage:(TestOptimizedForSize*)value;
-- (TestEmbedOptimizedForSizeBuilder *)setRepeatedMessageArray:(NSArray *)array;
+- (TestEmbedOptimizedForSizeBuilder *)setRepeatedMessageArray:(NSArray<TestOptimizedForSize*> *)array;
 - (TestEmbedOptimizedForSizeBuilder *)clearRepeatedMessage;
 @end
 

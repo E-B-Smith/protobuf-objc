@@ -3033,7 +3033,7 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 @property (strong) ComplexOptionType1* bar;
 @property SInt32 baz;
 @property (strong) ComplexOptionType2ComplexOptionType4* fred;
-@property (strong) NSMutableArray * barneyArray;
+@property (strong) NSMutableArray<ComplexOptionType2ComplexOptionType4*> * barneyArray;
 @end
 
 @implementation ComplexOptionType2
@@ -3081,7 +3081,7 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
 - (instancetype) defaultInstance {
   return defaultComplexOptionType2Instance;
 }
-- (NSArray *)barney {
+- (NSArray<ComplexOptionType2ComplexOptionType4*> *)barney {
   return barneyArray;
 }
 - (ComplexOptionType2ComplexOptionType4*)barneyAtIndex:(NSUInteger)index {
@@ -3651,7 +3651,7 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
   resultComplexOptionType2.fred = [ComplexOptionType2ComplexOptionType4 defaultInstance];
   return self;
 }
-- (NSMutableArray *)barney {
+- (NSMutableArray<ComplexOptionType2ComplexOptionType4*> *)barney {
   return resultComplexOptionType2.barneyArray;
 }
 - (ComplexOptionType2ComplexOptionType4*)barneyAtIndex:(NSUInteger)index {
@@ -3664,7 +3664,7 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
   [resultComplexOptionType2.barneyArray addObject:value];
   return self;
 }
-- (ComplexOptionType2Builder *)setBarneyArray:(NSArray *)array {
+- (ComplexOptionType2Builder *)setBarneyArray:(NSArray<ComplexOptionType2ComplexOptionType4*> *)array {
   resultComplexOptionType2.barneyArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }

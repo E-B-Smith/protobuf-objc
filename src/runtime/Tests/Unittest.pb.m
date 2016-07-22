@@ -1680,16 +1680,16 @@ NSString *NSStringFromTestSparseEnum(TestSparseEnum value) {
 @property (strong) PBAppendableArray * repeatedBoolArray;
 @property (strong) NSMutableArray * repeatedStringArray;
 @property (strong) NSMutableArray * repeatedBytesArray;
-@property (strong) NSMutableArray * repeatedGroupArray;
-@property (strong) NSMutableArray * repeatedNestedMessageArray;
-@property (strong) NSMutableArray * repeatedForeignMessageArray;
-@property (strong) NSMutableArray * repeatedImportMessageArray;
+@property (strong) NSMutableArray<TestAllTypesRepeatedGroup*> * repeatedGroupArray;
+@property (strong) NSMutableArray<TestAllTypesNestedMessage*> * repeatedNestedMessageArray;
+@property (strong) NSMutableArray<ForeignMessage*> * repeatedForeignMessageArray;
+@property (strong) NSMutableArray<ImportMessage*> * repeatedImportMessageArray;
 @property (strong) PBAppendableArray * repeatedNestedEnumArray;
 @property (strong) PBAppendableArray * repeatedForeignEnumArray;
 @property (strong) PBAppendableArray * repeatedImportEnumArray;
 @property (strong) NSMutableArray * repeatedStringPieceArray;
 @property (strong) NSMutableArray * repeatedCordArray;
-@property (strong) NSMutableArray * repeatedLazyMessageArray;
+@property (strong) NSMutableArray<TestAllTypesNestedMessage*> * repeatedLazyMessageArray;
 @property SInt32 defaultInt32;
 @property SInt64 defaultInt64;
 @property UInt32 defaultUint32;
@@ -2285,25 +2285,25 @@ static TestAllTypes* defaultTestAllTypesInstance = nil;
 - (NSData*)repeatedBytesAtIndex:(NSUInteger)index {
   return [repeatedBytesArray objectAtIndex:index];
 }
-- (NSArray *)repeatedGroup {
+- (NSArray<TestAllTypesRepeatedGroup*> *)repeatedGroup {
   return repeatedGroupArray;
 }
 - (TestAllTypesRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index {
   return [repeatedGroupArray objectAtIndex:index];
 }
-- (NSArray *)repeatedNestedMessage {
+- (NSArray<TestAllTypesNestedMessage*> *)repeatedNestedMessage {
   return repeatedNestedMessageArray;
 }
 - (TestAllTypesNestedMessage*)repeatedNestedMessageAtIndex:(NSUInteger)index {
   return [repeatedNestedMessageArray objectAtIndex:index];
 }
-- (NSArray *)repeatedForeignMessage {
+- (NSArray<ForeignMessage*> *)repeatedForeignMessage {
   return repeatedForeignMessageArray;
 }
 - (ForeignMessage*)repeatedForeignMessageAtIndex:(NSUInteger)index {
   return [repeatedForeignMessageArray objectAtIndex:index];
 }
-- (NSArray *)repeatedImportMessage {
+- (NSArray<ImportMessage*> *)repeatedImportMessage {
   return repeatedImportMessageArray;
 }
 - (ImportMessage*)repeatedImportMessageAtIndex:(NSUInteger)index {
@@ -2339,7 +2339,7 @@ static TestAllTypes* defaultTestAllTypesInstance = nil;
 - (NSString*)repeatedCordAtIndex:(NSUInteger)index {
   return [repeatedCordArray objectAtIndex:index];
 }
-- (NSArray *)repeatedLazyMessage {
+- (NSArray<TestAllTypesNestedMessage*> *)repeatedLazyMessage {
   return repeatedLazyMessageArray;
 }
 - (TestAllTypesNestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index {
@@ -6236,7 +6236,7 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   resultTestAllTypes.repeatedBytesArray = nil;
   return self;
 }
-- (NSMutableArray *)repeatedGroup {
+- (NSMutableArray<TestAllTypesRepeatedGroup*> *)repeatedGroup {
   return resultTestAllTypes.repeatedGroupArray;
 }
 - (TestAllTypesRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index {
@@ -6249,7 +6249,7 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   [resultTestAllTypes.repeatedGroupArray addObject:value];
   return self;
 }
-- (TestAllTypesBuilder *)setRepeatedGroupArray:(NSArray *)array {
+- (TestAllTypesBuilder *)setRepeatedGroupArray:(NSArray<TestAllTypesRepeatedGroup*> *)array {
   resultTestAllTypes.repeatedGroupArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -6257,7 +6257,7 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   resultTestAllTypes.repeatedGroupArray = nil;
   return self;
 }
-- (NSMutableArray *)repeatedNestedMessage {
+- (NSMutableArray<TestAllTypesNestedMessage*> *)repeatedNestedMessage {
   return resultTestAllTypes.repeatedNestedMessageArray;
 }
 - (TestAllTypesNestedMessage*)repeatedNestedMessageAtIndex:(NSUInteger)index {
@@ -6270,7 +6270,7 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   [resultTestAllTypes.repeatedNestedMessageArray addObject:value];
   return self;
 }
-- (TestAllTypesBuilder *)setRepeatedNestedMessageArray:(NSArray *)array {
+- (TestAllTypesBuilder *)setRepeatedNestedMessageArray:(NSArray<TestAllTypesNestedMessage*> *)array {
   resultTestAllTypes.repeatedNestedMessageArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -6278,7 +6278,7 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   resultTestAllTypes.repeatedNestedMessageArray = nil;
   return self;
 }
-- (NSMutableArray *)repeatedForeignMessage {
+- (NSMutableArray<ForeignMessage*> *)repeatedForeignMessage {
   return resultTestAllTypes.repeatedForeignMessageArray;
 }
 - (ForeignMessage*)repeatedForeignMessageAtIndex:(NSUInteger)index {
@@ -6291,7 +6291,7 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   [resultTestAllTypes.repeatedForeignMessageArray addObject:value];
   return self;
 }
-- (TestAllTypesBuilder *)setRepeatedForeignMessageArray:(NSArray *)array {
+- (TestAllTypesBuilder *)setRepeatedForeignMessageArray:(NSArray<ForeignMessage*> *)array {
   resultTestAllTypes.repeatedForeignMessageArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -6299,7 +6299,7 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   resultTestAllTypes.repeatedForeignMessageArray = nil;
   return self;
 }
-- (NSMutableArray *)repeatedImportMessage {
+- (NSMutableArray<ImportMessage*> *)repeatedImportMessage {
   return resultTestAllTypes.repeatedImportMessageArray;
 }
 - (ImportMessage*)repeatedImportMessageAtIndex:(NSUInteger)index {
@@ -6312,7 +6312,7 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   [resultTestAllTypes.repeatedImportMessageArray addObject:value];
   return self;
 }
-- (TestAllTypesBuilder *)setRepeatedImportMessageArray:(NSArray *)array {
+- (TestAllTypesBuilder *)setRepeatedImportMessageArray:(NSArray<ImportMessage*> *)array {
   resultTestAllTypes.repeatedImportMessageArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -6437,7 +6437,7 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   resultTestAllTypes.repeatedCordArray = nil;
   return self;
 }
-- (NSMutableArray *)repeatedLazyMessage {
+- (NSMutableArray<TestAllTypesNestedMessage*> *)repeatedLazyMessage {
   return resultTestAllTypes.repeatedLazyMessageArray;
 }
 - (TestAllTypesNestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index {
@@ -6450,7 +6450,7 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   [resultTestAllTypes.repeatedLazyMessageArray addObject:value];
   return self;
 }
-- (TestAllTypesBuilder *)setRepeatedLazyMessageArray:(NSArray *)array {
+- (TestAllTypesBuilder *)setRepeatedLazyMessageArray:(NSArray<TestAllTypesNestedMessage*> *)array {
   resultTestAllTypes.repeatedLazyMessageArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -10111,7 +10111,7 @@ static TestRequired* defaultTestRequiredInstance = nil;
 
 @interface TestRequiredForeign ()
 @property (strong) TestRequired* optionalMessage;
-@property (strong) NSMutableArray * repeatedMessageArray;
+@property (strong) NSMutableArray<TestRequired*> * repeatedMessageArray;
 @property SInt32 dummy;
 @end
 
@@ -10152,7 +10152,7 @@ static TestRequiredForeign* defaultTestRequiredForeignInstance = nil;
 - (instancetype) defaultInstance {
   return defaultTestRequiredForeignInstance;
 }
-- (NSArray *)repeatedMessage {
+- (NSArray<TestRequired*> *)repeatedMessage {
   return repeatedMessageArray;
 }
 - (TestRequired*)repeatedMessageAtIndex:(NSUInteger)index {
@@ -10426,7 +10426,7 @@ static TestRequiredForeign* defaultTestRequiredForeignInstance = nil;
   resultTestRequiredForeign.optionalMessage = [TestRequired defaultInstance];
   return self;
 }
-- (NSMutableArray *)repeatedMessage {
+- (NSMutableArray<TestRequired*> *)repeatedMessage {
   return resultTestRequiredForeign.repeatedMessageArray;
 }
 - (TestRequired*)repeatedMessageAtIndex:(NSUInteger)index {
@@ -10439,7 +10439,7 @@ static TestRequiredForeign* defaultTestRequiredForeignInstance = nil;
   [resultTestRequiredForeign.repeatedMessageArray addObject:value];
   return self;
 }
-- (TestRequiredForeignBuilder *)setRepeatedMessageArray:(NSArray *)array {
+- (TestRequiredForeignBuilder *)setRepeatedMessageArray:(NSArray<TestRequired*> *)array {
   resultTestRequiredForeign.repeatedMessageArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -13609,7 +13609,7 @@ static TestNestedMessageHasBits* defaultTestNestedMessageHasBitsInstance = nil;
 
 @interface TestNestedMessageHasBitsNestedMessage ()
 @property (strong) PBAppendableArray * nestedmessageRepeatedInt32Array;
-@property (strong) NSMutableArray * nestedmessageRepeatedForeignmessageArray;
+@property (strong) NSMutableArray<ForeignMessage*> * nestedmessageRepeatedForeignmessageArray;
 @end
 
 @implementation TestNestedMessageHasBitsNestedMessage
@@ -13641,7 +13641,7 @@ static TestNestedMessageHasBitsNestedMessage* defaultTestNestedMessageHasBitsNes
 - (SInt32)nestedmessageRepeatedInt32AtIndex:(NSUInteger)index {
   return [nestedmessageRepeatedInt32Array int32AtIndex:index];
 }
-- (NSArray *)nestedmessageRepeatedForeignmessage {
+- (NSArray<ForeignMessage*> *)nestedmessageRepeatedForeignmessage {
   return nestedmessageRepeatedForeignmessageArray;
 }
 - (ForeignMessage*)nestedmessageRepeatedForeignmessageAtIndex:(NSUInteger)index {
@@ -13880,7 +13880,7 @@ static TestNestedMessageHasBitsNestedMessage* defaultTestNestedMessageHasBitsNes
   resultNestedMessage.nestedmessageRepeatedInt32Array = nil;
   return self;
 }
-- (NSMutableArray *)nestedmessageRepeatedForeignmessage {
+- (NSMutableArray<ForeignMessage*> *)nestedmessageRepeatedForeignmessage {
   return resultNestedMessage.nestedmessageRepeatedForeignmessageArray;
 }
 - (ForeignMessage*)nestedmessageRepeatedForeignmessageAtIndex:(NSUInteger)index {
@@ -13893,7 +13893,7 @@ static TestNestedMessageHasBitsNestedMessage* defaultTestNestedMessageHasBitsNes
   [resultNestedMessage.nestedmessageRepeatedForeignmessageArray addObject:value];
   return self;
 }
-- (TestNestedMessageHasBitsNestedMessageBuilder *)setNestedmessageRepeatedForeignmessageArray:(NSArray *)array {
+- (TestNestedMessageHasBitsNestedMessageBuilder *)setNestedmessageRepeatedForeignmessageArray:(NSArray<ForeignMessage*> *)array {
   resultNestedMessage.nestedmessageRepeatedForeignmessageArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -14019,7 +14019,7 @@ static TestNestedMessageHasBitsNestedMessage* defaultTestNestedMessageHasBitsNes
 @property (strong) PBAppendableArray * repeatedPrimitiveFieldArray;
 @property (strong) NSMutableArray * repeatedStringFieldArray;
 @property (strong) PBAppendableArray * repeatedEnumFieldArray;
-@property (strong) NSMutableArray * repeatedMessageFieldArray;
+@property (strong) NSMutableArray<ForeignMessage*> * repeatedMessageFieldArray;
 @property (strong) NSMutableArray * repeatedStringPieceFieldArray;
 @property (strong) NSMutableArray * repeatedCordFieldArray;
 @end
@@ -14121,7 +14121,7 @@ static TestCamelCaseFieldNames* defaultTestCamelCaseFieldNamesInstance = nil;
 - (ForeignEnum)repeatedEnumFieldAtIndex:(NSUInteger)index {
   return (ForeignEnum)[repeatedEnumFieldArray enumAtIndex:index];
 }
-- (NSArray *)repeatedMessageField {
+- (NSArray<ForeignMessage*> *)repeatedMessageField {
   return repeatedMessageFieldArray;
 }
 - (ForeignMessage*)repeatedMessageFieldAtIndex:(NSUInteger)index {
@@ -14827,7 +14827,7 @@ static TestCamelCaseFieldNames* defaultTestCamelCaseFieldNamesInstance = nil;
   resultTestCamelCaseFieldNames.repeatedEnumFieldArray = nil;
   return self;
 }
-- (NSMutableArray *)repeatedMessageField {
+- (NSMutableArray<ForeignMessage*> *)repeatedMessageField {
   return resultTestCamelCaseFieldNames.repeatedMessageFieldArray;
 }
 - (ForeignMessage*)repeatedMessageFieldAtIndex:(NSUInteger)index {
@@ -14840,7 +14840,7 @@ static TestCamelCaseFieldNames* defaultTestCamelCaseFieldNamesInstance = nil;
   [resultTestCamelCaseFieldNames.repeatedMessageFieldArray addObject:value];
   return self;
 }
-- (TestCamelCaseFieldNamesBuilder *)setRepeatedMessageFieldArray:(NSArray *)array {
+- (TestCamelCaseFieldNamesBuilder *)setRepeatedMessageFieldArray:(NSArray<ForeignMessage*> *)array {
   resultTestCamelCaseFieldNames.repeatedMessageFieldArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -26643,9 +26643,9 @@ static TestRepeatedScalarDifferentTagSizes* defaultTestRepeatedScalarDifferentTa
 @interface TestParsingMerge ()
 @property (strong) TestAllTypes* requiredAllTypes;
 @property (strong) TestAllTypes* optionalAllTypes;
-@property (strong) NSMutableArray * repeatedAllTypesArray;
+@property (strong) NSMutableArray<TestAllTypes*> * repeatedAllTypesArray;
 @property (strong) TestParsingMergeOptionalGroup* optionalGroup;
-@property (strong) NSMutableArray * repeatedGroupArray;
+@property (strong) NSMutableArray<TestParsingMergeRepeatedGroup*> * repeatedGroupArray;
 @end
 
 @implementation TestParsingMerge
@@ -26701,13 +26701,13 @@ static TestParsingMerge* defaultTestParsingMergeInstance = nil;
 - (instancetype) defaultInstance {
   return defaultTestParsingMergeInstance;
 }
-- (NSArray *)repeatedAllTypes {
+- (NSArray<TestAllTypes*> *)repeatedAllTypes {
   return repeatedAllTypesArray;
 }
 - (TestAllTypes*)repeatedAllTypesAtIndex:(NSUInteger)index {
   return [repeatedAllTypesArray objectAtIndex:index];
 }
-- (NSArray *)repeatedGroup {
+- (NSArray<TestParsingMergeRepeatedGroup*> *)repeatedGroup {
   return repeatedGroupArray;
 }
 - (TestParsingMergeRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index {
@@ -26910,13 +26910,13 @@ static TestParsingMerge* defaultTestParsingMergeInstance = nil;
 @end
 
 @interface TestParsingMergeRepeatedFieldsGenerator ()
-@property (strong) NSMutableArray * field1Array;
-@property (strong) NSMutableArray * field2Array;
-@property (strong) NSMutableArray * field3Array;
-@property (strong) NSMutableArray * group1Array;
-@property (strong) NSMutableArray * group2Array;
-@property (strong) NSMutableArray * ext1Array;
-@property (strong) NSMutableArray * ext2Array;
+@property (strong) NSMutableArray<TestAllTypes*> * field1Array;
+@property (strong) NSMutableArray<TestAllTypes*> * field2Array;
+@property (strong) NSMutableArray<TestAllTypes*> * field3Array;
+@property (strong) NSMutableArray<TestParsingMergeRepeatedFieldsGeneratorGroup1*> * group1Array;
+@property (strong) NSMutableArray<TestParsingMergeRepeatedFieldsGeneratorGroup2*> * group2Array;
+@property (strong) NSMutableArray<TestAllTypes*> * ext1Array;
+@property (strong) NSMutableArray<TestAllTypes*> * ext2Array;
 @end
 
 @implementation TestParsingMergeRepeatedFieldsGenerator
@@ -26952,43 +26952,43 @@ static TestParsingMergeRepeatedFieldsGenerator* defaultTestParsingMergeRepeatedF
 - (instancetype) defaultInstance {
   return defaultTestParsingMergeRepeatedFieldsGeneratorInstance;
 }
-- (NSArray *)field1 {
+- (NSArray<TestAllTypes*> *)field1 {
   return field1Array;
 }
 - (TestAllTypes*)field1AtIndex:(NSUInteger)index {
   return [field1Array objectAtIndex:index];
 }
-- (NSArray *)field2 {
+- (NSArray<TestAllTypes*> *)field2 {
   return field2Array;
 }
 - (TestAllTypes*)field2AtIndex:(NSUInteger)index {
   return [field2Array objectAtIndex:index];
 }
-- (NSArray *)field3 {
+- (NSArray<TestAllTypes*> *)field3 {
   return field3Array;
 }
 - (TestAllTypes*)field3AtIndex:(NSUInteger)index {
   return [field3Array objectAtIndex:index];
 }
-- (NSArray *)group1 {
+- (NSArray<TestParsingMergeRepeatedFieldsGeneratorGroup1*> *)group1 {
   return group1Array;
 }
 - (TestParsingMergeRepeatedFieldsGeneratorGroup1*)group1AtIndex:(NSUInteger)index {
   return [group1Array objectAtIndex:index];
 }
-- (NSArray *)group2 {
+- (NSArray<TestParsingMergeRepeatedFieldsGeneratorGroup2*> *)group2 {
   return group2Array;
 }
 - (TestParsingMergeRepeatedFieldsGeneratorGroup2*)group2AtIndex:(NSUInteger)index {
   return [group2Array objectAtIndex:index];
 }
-- (NSArray *)ext1 {
+- (NSArray<TestAllTypes*> *)ext1 {
   return ext1Array;
 }
 - (TestAllTypes*)ext1AtIndex:(NSUInteger)index {
   return [ext1Array objectAtIndex:index];
 }
-- (NSArray *)ext2 {
+- (NSArray<TestAllTypes*> *)ext2 {
   return ext2Array;
 }
 - (TestAllTypes*)ext2AtIndex:(NSUInteger)index {
@@ -27825,7 +27825,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
     }
   }
 }
-- (NSMutableArray *)field1 {
+- (NSMutableArray<TestAllTypes*> *)field1 {
   return resultRepeatedFieldsGenerator.field1Array;
 }
 - (TestAllTypes*)field1AtIndex:(NSUInteger)index {
@@ -27838,7 +27838,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   [resultRepeatedFieldsGenerator.field1Array addObject:value];
   return self;
 }
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField1Array:(NSArray *)array {
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField1Array:(NSArray<TestAllTypes*> *)array {
   resultRepeatedFieldsGenerator.field1Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -27846,7 +27846,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   resultRepeatedFieldsGenerator.field1Array = nil;
   return self;
 }
-- (NSMutableArray *)field2 {
+- (NSMutableArray<TestAllTypes*> *)field2 {
   return resultRepeatedFieldsGenerator.field2Array;
 }
 - (TestAllTypes*)field2AtIndex:(NSUInteger)index {
@@ -27859,7 +27859,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   [resultRepeatedFieldsGenerator.field2Array addObject:value];
   return self;
 }
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField2Array:(NSArray *)array {
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField2Array:(NSArray<TestAllTypes*> *)array {
   resultRepeatedFieldsGenerator.field2Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -27867,7 +27867,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   resultRepeatedFieldsGenerator.field2Array = nil;
   return self;
 }
-- (NSMutableArray *)field3 {
+- (NSMutableArray<TestAllTypes*> *)field3 {
   return resultRepeatedFieldsGenerator.field3Array;
 }
 - (TestAllTypes*)field3AtIndex:(NSUInteger)index {
@@ -27880,7 +27880,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   [resultRepeatedFieldsGenerator.field3Array addObject:value];
   return self;
 }
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField3Array:(NSArray *)array {
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField3Array:(NSArray<TestAllTypes*> *)array {
   resultRepeatedFieldsGenerator.field3Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -27888,7 +27888,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   resultRepeatedFieldsGenerator.field3Array = nil;
   return self;
 }
-- (NSMutableArray *)group1 {
+- (NSMutableArray<TestParsingMergeRepeatedFieldsGeneratorGroup1*> *)group1 {
   return resultRepeatedFieldsGenerator.group1Array;
 }
 - (TestParsingMergeRepeatedFieldsGeneratorGroup1*)group1AtIndex:(NSUInteger)index {
@@ -27901,7 +27901,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   [resultRepeatedFieldsGenerator.group1Array addObject:value];
   return self;
 }
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setGroup1Array:(NSArray *)array {
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setGroup1Array:(NSArray<TestParsingMergeRepeatedFieldsGeneratorGroup1*> *)array {
   resultRepeatedFieldsGenerator.group1Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -27909,7 +27909,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   resultRepeatedFieldsGenerator.group1Array = nil;
   return self;
 }
-- (NSMutableArray *)group2 {
+- (NSMutableArray<TestParsingMergeRepeatedFieldsGeneratorGroup2*> *)group2 {
   return resultRepeatedFieldsGenerator.group2Array;
 }
 - (TestParsingMergeRepeatedFieldsGeneratorGroup2*)group2AtIndex:(NSUInteger)index {
@@ -27922,7 +27922,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   [resultRepeatedFieldsGenerator.group2Array addObject:value];
   return self;
 }
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setGroup2Array:(NSArray *)array {
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setGroup2Array:(NSArray<TestParsingMergeRepeatedFieldsGeneratorGroup2*> *)array {
   resultRepeatedFieldsGenerator.group2Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -27930,7 +27930,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   resultRepeatedFieldsGenerator.group2Array = nil;
   return self;
 }
-- (NSMutableArray *)ext1 {
+- (NSMutableArray<TestAllTypes*> *)ext1 {
   return resultRepeatedFieldsGenerator.ext1Array;
 }
 - (TestAllTypes*)ext1AtIndex:(NSUInteger)index {
@@ -27943,7 +27943,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   [resultRepeatedFieldsGenerator.ext1Array addObject:value];
   return self;
 }
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setExt1Array:(NSArray *)array {
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setExt1Array:(NSArray<TestAllTypes*> *)array {
   resultRepeatedFieldsGenerator.ext1Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -27951,7 +27951,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   resultRepeatedFieldsGenerator.ext1Array = nil;
   return self;
 }
-- (NSMutableArray *)ext2 {
+- (NSMutableArray<TestAllTypes*> *)ext2 {
   return resultRepeatedFieldsGenerator.ext2Array;
 }
 - (TestAllTypes*)ext2AtIndex:(NSUInteger)index {
@@ -27964,7 +27964,7 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   [resultRepeatedFieldsGenerator.ext2Array addObject:value];
   return self;
 }
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setExt2Array:(NSArray *)array {
+- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setExt2Array:(NSArray<TestAllTypes*> *)array {
   resultRepeatedFieldsGenerator.ext2Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -28619,7 +28619,7 @@ static TestParsingMergeRepeatedGroup* defaultTestParsingMergeRepeatedGroupInstan
   resultTestParsingMerge.optionalAllTypes = [TestAllTypes defaultInstance];
   return self;
 }
-- (NSMutableArray *)repeatedAllTypes {
+- (NSMutableArray<TestAllTypes*> *)repeatedAllTypes {
   return resultTestParsingMerge.repeatedAllTypesArray;
 }
 - (TestAllTypes*)repeatedAllTypesAtIndex:(NSUInteger)index {
@@ -28632,7 +28632,7 @@ static TestParsingMergeRepeatedGroup* defaultTestParsingMergeRepeatedGroupInstan
   [resultTestParsingMerge.repeatedAllTypesArray addObject:value];
   return self;
 }
-- (TestParsingMergeBuilder *)setRepeatedAllTypesArray:(NSArray *)array {
+- (TestParsingMergeBuilder *)setRepeatedAllTypesArray:(NSArray<TestAllTypes*> *)array {
   resultTestParsingMerge.repeatedAllTypesArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
@@ -28670,7 +28670,7 @@ static TestParsingMergeRepeatedGroup* defaultTestParsingMergeRepeatedGroupInstan
   resultTestParsingMerge.optionalGroup = [TestParsingMergeOptionalGroup defaultInstance];
   return self;
 }
-- (NSMutableArray *)repeatedGroup {
+- (NSMutableArray<TestParsingMergeRepeatedGroup*> *)repeatedGroup {
   return resultTestParsingMerge.repeatedGroupArray;
 }
 - (TestParsingMergeRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index {
@@ -28683,7 +28683,7 @@ static TestParsingMergeRepeatedGroup* defaultTestParsingMergeRepeatedGroupInstan
   [resultTestParsingMerge.repeatedGroupArray addObject:value];
   return self;
 }
-- (TestParsingMergeBuilder *)setRepeatedGroupArray:(NSArray *)array {
+- (TestParsingMergeBuilder *)setRepeatedGroupArray:(NSArray<TestParsingMergeRepeatedGroup*> *)array {
   resultTestParsingMerge.repeatedGroupArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }

@@ -775,7 +775,7 @@ NSString *NSStringFromNestedOptionTypeNestedEnum(NestedOptionTypeNestedEnum valu
 @property (readonly, strong) ComplexOptionType1* bar;
 @property (readonly) SInt32 baz;
 @property (readonly, strong) ComplexOptionType2ComplexOptionType4* fred;
-@property (readonly, strong) NSArray * barney;
+@property (readonly, strong) NSArray<ComplexOptionType2ComplexOptionType4*> * barney;
 - (ComplexOptionType2ComplexOptionType4*)barneyAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -883,10 +883,10 @@ NSString *NSStringFromNestedOptionTypeNestedEnum(NestedOptionTypeNestedEnum valu
 - (ComplexOptionType2Builder*) mergeFred:(ComplexOptionType2ComplexOptionType4*) value;
 - (ComplexOptionType2Builder*) clearFred;
 
-- (NSMutableArray *)barney;
+- (NSMutableArray<ComplexOptionType2ComplexOptionType4*> *)barney;
 - (ComplexOptionType2ComplexOptionType4*)barneyAtIndex:(NSUInteger)index;
 - (ComplexOptionType2Builder *)addBarney:(ComplexOptionType2ComplexOptionType4*)value;
-- (ComplexOptionType2Builder *)setBarneyArray:(NSArray *)array;
+- (ComplexOptionType2Builder *)setBarneyArray:(NSArray<ComplexOptionType2ComplexOptionType4*> *)array;
 - (ComplexOptionType2Builder *)clearBarney;
 @end
 

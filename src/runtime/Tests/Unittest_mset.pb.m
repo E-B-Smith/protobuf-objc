@@ -868,7 +868,7 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
 @end
 
 @interface RawMessageSet ()
-@property (strong) NSMutableArray * itemArray;
+@property (strong) NSMutableArray<RawMessageSetItem*> * itemArray;
 @end
 
 @implementation RawMessageSet
@@ -892,7 +892,7 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
 - (instancetype) defaultInstance {
   return defaultRawMessageSetInstance;
 }
-- (NSArray *)item {
+- (NSArray<RawMessageSetItem*> *)item {
   return itemArray;
 }
 - (RawMessageSetItem*)itemAtIndex:(NSUInteger)index {
@@ -1334,7 +1334,7 @@ static RawMessageSetItem* defaultRawMessageSetItemInstance = nil;
     }
   }
 }
-- (NSMutableArray *)item {
+- (NSMutableArray<RawMessageSetItem*> *)item {
   return resultRawMessageSet.itemArray;
 }
 - (RawMessageSetItem*)itemAtIndex:(NSUInteger)index {
@@ -1347,7 +1347,7 @@ static RawMessageSetItem* defaultRawMessageSetItemInstance = nil;
   [resultRawMessageSet.itemArray addObject:value];
   return self;
 }
-- (RawMessageSetBuilder *)setItemArray:(NSArray *)array {
+- (RawMessageSetBuilder *)setItemArray:(NSArray<RawMessageSetItem*> *)array {
   resultRawMessageSet.itemArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
